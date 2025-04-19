@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Poiret_One, Raleway, Roboto } from "next/font/google";
+import StyledComponentsRegistry from "./StyledComponentsRegistry";
+import Main from "./components/Main";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const roboto = Roboto({
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poiretOne = Poiret_One({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const raleway = Raleway({
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -24,8 +30,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body
+        lang="en"
+        className={`${roboto.className} ${poiretOne.className} $ ${raleway.className}`}
+      >
+        <StyledComponentsRegistry>
+          <Main>{children}</Main>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
