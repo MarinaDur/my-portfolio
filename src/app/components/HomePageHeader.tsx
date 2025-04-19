@@ -1,20 +1,17 @@
 import styled from "styled-components";
 import Paragraph from "../ui/Paragraph";
+import PageTitle from "../ui/PageTitle";
 
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-`;
-
-const StyledTitle = styled.h1`
-  font-size: 3rem;
+  gap: 1rem;
 `;
 
 export default function HomePageHeader() {
   return (
     <StyledHeader>
-      <StyledTitle>Marina Durmishov</StyledTitle>
+      <PageTitle>Marina Durmishov</PageTitle>
       <Paragraph>
         Hey there! I&apos;m Marina, a Full-Stack Developer with a knack for
         creating seamless user experiences. From frontend aesthetics to backend

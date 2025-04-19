@@ -3,16 +3,12 @@
 import { styled } from "styled-components";
 import PageContainer from "../ui/PageContainer";
 import Paragraph from "../ui/Paragraph";
+import PageTitle from "../ui/PageTitle";
 
 const StyledAboutPage = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-const StyledTitle = styled.h2`
-  font-size: 7rem;
-`;
-
 const StyledParagraphContainer = styled.div`
   display: flex;
   gap: 1rem;
@@ -34,7 +30,7 @@ function AboutPage() {
   return (
     <PageContainer>
       <StyledAboutPage>
-        <StyledTitle>ABOUT</StyledTitle>
+        <PageTitle as="h2">ABOUT</PageTitle>
         <StyledParagraphContainer>
           <Paragraph>
             Hey, I&apos;m Marina — a developer with a background in QA, a

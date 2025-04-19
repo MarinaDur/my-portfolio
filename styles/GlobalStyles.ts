@@ -5,9 +5,8 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyles = createGlobalStyle`
 
 :root{
-    --cl-primary-text-light: #282727;
-    --page-bg: #e9e2e2;
-    --page-text-color: #282727;
+    --dark: #282727;
+    --light: #e9e2e2;
 
 }
 
@@ -19,8 +18,8 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     margin: 0;
-    background: var(--page-bg);
-    color: var(--page-text-color);
+    background: var(--light);
+    color: var(--dark);
 
   }
 
@@ -49,13 +48,14 @@ const GlobalStyles = createGlobalStyle`
   width: 100vw; 
   }
 
-  input{
+  input, textarea, select {
     border: none;
     outline: none;
+    background: none;
   }
 
   &::after{
-    background: var(--page-text-color);
+    background: var(--dark);
   }
 
   /* You can add other global styles here */
