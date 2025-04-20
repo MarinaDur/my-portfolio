@@ -11,6 +11,11 @@ const StyledListItem = styled.li`
 
 const StyledListIName = styled.p`
   font-size: 4.1rem;
+  text-align: right;
+
+  @media (min-width: 1024px) {
+    font-size: clamp(6rem, 6vw, 10rem);
+  }
 `;
 
 const StyledIconsCon = styled.div`

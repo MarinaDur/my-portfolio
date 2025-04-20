@@ -6,6 +6,11 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (min-width: 1024px) {
+    width: 45%;
+    gap: 0;
+  }
 `;
 
 export default function HomePageHeader() {

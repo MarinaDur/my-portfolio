@@ -8,9 +8,18 @@ const StyledForm = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 4rem;
   margin-top: 2rem;
+  height: 100%;
+  justify-content: center;
   /* align-self: center; */
+
+  @media (min-width: 390px) {
+    gap: 5rem;
+  }
+  @media (min-width: 430px) {
+    gap: 6rem;
+  }
 `;
 
 const StyledInputCon = styled.label`

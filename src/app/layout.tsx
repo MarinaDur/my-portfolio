@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poiret_One, Raleway, Roboto } from "next/font/google";
+import { Genos, Poiret_One, Roboto } from "next/font/google";
 import StyledComponentsRegistry from "./StyledComponentsRegistry";
 import Main from "./components/Main";
 
@@ -13,7 +13,7 @@ const poiretOne = Poiret_One({
   subsets: ["latin"],
 });
 
-const raleway = Raleway({
+const genos = Genos({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         lang="en"
-        className={`${roboto.className} ${poiretOne.className} $ ${raleway.className}`}
+        className={`${roboto.className} ${poiretOne.className} $ ${genos.className}`}
       >
         <StyledComponentsRegistry>
           <Main>{children}</Main>

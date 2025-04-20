@@ -4,6 +4,17 @@ const StyledStyledLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 1024px) {
+    /* grid-template-columns: 80px auto; */
+    grid-template-columns: 5% 95%;
+    grid-template-rows: auto auto;
+    /* width: 100vw; */
+    justify-items: center;
+    width: 100%;
+  }
 `;
 
 function StyledLayout({ children }: { children: React.ReactNode }) {

@@ -7,7 +7,22 @@ import GlobalStyles from "../../../styles/GlobalStyles";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const StyledMain = styled.main``;
+const StyledMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  @media (min-width: 1024px) {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+`;
 
 function Main({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

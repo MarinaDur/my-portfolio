@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    margin: 0;
+    /* margin: 0; */
     background: var(--light);
     color: var(--dark);
 
@@ -42,10 +42,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main{
-    display: flex;
-  flex-direction: column;
- height: 100vh;
-  width: 100vw; 
+
   }
 
   input, textarea, select {

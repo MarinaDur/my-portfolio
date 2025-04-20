@@ -27,12 +27,25 @@ const StyledNavigation = styled.nav`
     height: 2px;
     transition: width 0.3s;
   }
+
+  @media (min-width: 1024px) {
+    align-self: flex-end;
+    transform: rotate(-90deg);
+    /* margin-bottom: 50px; */
+    padding-bottom: 3px;
+    padding-left: 10px;
+    justify-self: normal;
+
+    &::after {
+      width: 190px;
+    }
+  }
 `;
 
 const StyledNavigationItem = styled(Link)`
   /* color: var(--cl-primary-text-light); */
-  font-family: "Raleway", sans-serif;
-  font-size: 1.3rem;
+  font-family: "Genos", sans-serif;
+  font-size: 1.5rem;
   font-weight: 700;
 `;
 

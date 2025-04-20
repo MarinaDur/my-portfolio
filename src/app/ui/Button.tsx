@@ -7,18 +7,20 @@ interface ButtonProps {
 
 const StyledButton = styled.button`
   width: 100%;
-  padding: 1rem;
-  font-size: 1.5rem;
-  border-radius: 20px;
-  background: var(--light);
-  border: 0.5px solid var(--dark);
+  font-size: 3rem;
+  /* border-radius: 20px; */
+  background: transparent;
+  border: none;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   color: var(--dark);
+  text-align: left;
+  font-family: "Raleway", sans-serif;
+  margin-top: -1rem;
 
   &:hover {
     background: var(--light);
-    color: #fff;
+    /* color: #fff; */
   }
 `;
 

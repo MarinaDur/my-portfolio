@@ -7,6 +7,12 @@ const StyledNavigationHomePage = styled.nav`
   gap: 4rem;
   height: 100%;
   justify-content: center;
+
+  @media (min-width: 1024px) {
+    justify-content: flex-end;
+    width: 55%;
+    align-items: flex-end;
+  }
 `;
 
 const StyledNavigationItem = styled(Link)`
@@ -14,6 +20,11 @@ const StyledNavigationItem = styled(Link)`
   font-family: "Poiret One", sans-serif;
   font-size: 7rem;
   font-weight: 600;
+
+  @media (min-width: 1024px) {
+    font-size: clamp(10rem, 10vw, 11rem);
+    letter-spacing: 5px;
+  }
 `;
 
 function NavigationHomePage() {
