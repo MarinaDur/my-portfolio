@@ -7,6 +7,11 @@ const StyledListItem = styled.li`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    align-items: flex-end;
+  }
 `;
 
 const StyledListIName = styled.p`

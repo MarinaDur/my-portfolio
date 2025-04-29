@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { styled } from "styled-components";
+import { NavLink } from "./NavLink";
 
 const StyledNavigationHomePage = styled.nav`
   display: flex;
@@ -10,29 +10,26 @@ const StyledNavigationHomePage = styled.nav`
 
   @media (min-width: 1024px) {
     justify-content: flex-end;
-    width: 55%;
-    align-items: flex-end;
-  }
-`;
-
-const StyledNavigationItem = styled(Link)`
-  color: var(--cl-primary-text-light);
-  font-family: "Poiret One", sans-serif;
-  font-size: 7rem;
-  font-weight: 600;
-
-  @media (min-width: 1024px) {
-    font-size: clamp(10rem, 10vw, 11rem);
-    letter-spacing: 5px;
+    width: 60%;
+    align-items: flex-start;
+    gap: 0;
   }
 `;
 
 function NavigationHomePage() {
+  const navItems = [
+    { link: "/about", name: "ABOUT", theme: "light" },
+    { link: "/projects", name: "PROJECTS", theme: "dark" },
+    { link: "/contact", name: "CONTACT", theme: "dark" },
+  ];
+
   return (
     <StyledNavigationHomePage>
-      <StyledNavigationItem href="/about">ABOUT</StyledNavigationItem>
-      <StyledNavigationItem href="/projects">PROJECTS</StyledNavigationItem>
-      <StyledNavigationItem href="/contact">CONTACT</StyledNavigationItem>
+      {navItems.map((item, index) => (
+        <NavLink key={index} href={item.link}>
+          {item.name}
+        </NavLink>
+      ))}
     </StyledNavigationHomePage>
   );
 }

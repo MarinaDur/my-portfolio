@@ -18,10 +18,28 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     /* margin: 0; */
-    background: var(--light);
-    color: var(--dark);
+    /* background: var(--dark);
+    color: var(--dark); */
 
   }
+
+body.page-transition::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #282727; 
+  z-index: 999999;
+  transform: translateY(0%); 
+  transition: transform 0.7s ease-in-out;
+  pointer-events: none;
+}
+
+body.page-transition.page-transition-start::before {
+  transform: translateY(-100%); 
+}
 
   /* Additional global styles */
   * {
@@ -29,7 +47,18 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: "Poiret One", sans-serif;
+
   }
+
+  body.transition-active main {
+  opacity: 0;
+  pointer-events: none;
+}
+
+  /* body.transition-active > *:not(#overlay) {
+    opacity: 0;
+    pointer-events: none;
+  } */
 
 
   h1, h2, h3, h4, h5, h6 {

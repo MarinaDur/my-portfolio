@@ -2,12 +2,15 @@
 
 import { styled } from "styled-components";
 import PageContainer from "../ui/PageContainer";
-import { useEffect } from "react";
 import PageTitle from "../ui/PageTitle";
 import Paragraph from "../ui/Paragraph";
 import ProjectsLink from "../components/ProjectsLink";
+import PageBg from "../ui/PageBg";
+import { useEffect } from "react";
+import { animateOut } from "../utils/aminateOut";
 
 const StyledHeader = styled.div`
+  color: var(--light);
   @media (min-width: 1024px) {
     width: 40%;
   }
@@ -34,6 +37,7 @@ const StyledList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  color: var(--light);
 `;
 
 const StyledListWrapper = styled.div`
@@ -63,78 +67,75 @@ const StyledListWrapper = styled.div`
 
 function ProjectsPage() {
   useEffect(() => {
-    document.documentElement.style.setProperty("--light", "#282727");
-    document.documentElement.style.setProperty("--dark", "#e9e2e2");
-
-    return () => {
-      document.documentElement.style.removeProperty("--light");
-      document.documentElement.style.removeProperty("--dark");
-    };
+    animateOut();
   }, []);
-
   return (
-    <PageContainer
-      gap="5rem"
-      height="100%"
-      overflow="hidden"
-      heightBSize="calc(100vh - 2rem)"
-      maxHeight="500px"
-      minHeight="480px"
-      alignItems="flex-end"
-    >
-      <StyledHeader>
-        <PageTitle as="h2">PROJECTS</PageTitle>
-        <Paragraph>Tech stack used across projects:</Paragraph>
-        <Paragraph>
-          React, TypeScript, Styled Components, Node.js, Express, MongoDB, and
-          Mongoose
-        </Paragraph>
-      </StyledHeader>
-      <StyledCon>
-        <StyledListWrapper>
-          <StyledList
+    <>
+      <PageBg bgColor="var(--dark)" />
+      <PageContainer
+        gap="5rem"
+        height="100%"
+        overflow="hidden"
+        heightBSize="calc(100vh - 2rem)"
+        alignItems="flex-end"
+        bg="var(--dark)"
+      >
+        <StyledHeader>
+          <PageTitle as="h2" $color="var(--light)">
+            PROJECTS
+          </PageTitle>
+          <Paragraph>Tech stack used across projects:</Paragraph>
+          <Paragraph>
+            React, TypeScript, Styled Components, Node.js, Express, MongoDB, and
+            Mongoose
+          </Paragraph>
+        </StyledHeader>
+        <StyledCon>
+          <StyledListWrapper>
+            <StyledList
 
-          // animate={{ y: "-100%" }}
-          // transition={{
-          //   duration: 15,
-          //   ease: "linear",
-          //   repeat: Infinity,
-          // }}
-          >
-            <ProjectsLink
-              projectName="Markdown Editor"
-              githubLink="/"
-              liveLink="/"
-            ></ProjectsLink>
-            <ProjectsLink
-              projectName="Tic Tac Toe Game"
-              githubLink="/"
-              liveLink="/"
-            ></ProjectsLink>
-            <ProjectsLink
-              projectName="IP Address Tracker"
-              githubLink="/"
-              liveLink="/"
-            ></ProjectsLink>
-            <ProjectsLink
-              projectName="FrontEnd Quiz"
-              githubLink="/"
-              liveLink="/"
-            ></ProjectsLink>
-            <ProjectsLink
-              projectName="Todo App"
-              githubLink="/"
-              liveLink="/"
-            ></ProjectsLink>
-            <ProjectsLink
-              projectName="Dine restaurant"
-              githubLink="/"
-              liveLink="/"
-            ></ProjectsLink>
-          </StyledList>
-        </StyledListWrapper>
-      </StyledCon>
-    </PageContainer>
+            // animate={{ y: "-100%" }}
+            // transition={{
+            //   duration: 15,
+            //   ease: "linear",
+            //   repeat: Infinity,
+            // }}
+            >
+              <ProjectsLink
+                projectName="Markdown Editor"
+                githubLink="/"
+                liveLink="/"
+              ></ProjectsLink>
+              <ProjectsLink
+                projectName="Tic Tac Toe Game"
+                githubLink="/"
+                liveLink="/"
+              ></ProjectsLink>
+              <ProjectsLink
+                projectName="IP Address Tracker"
+                githubLink="/"
+                liveLink="/"
+              ></ProjectsLink>
+              <ProjectsLink
+                projectName="FrontEnd Quiz"
+                githubLink="/"
+                liveLink="/"
+              ></ProjectsLink>
+              <ProjectsLink
+                projectName="Todo App"
+                githubLink="/"
+                liveLink="/"
+              ></ProjectsLink>
+              <ProjectsLink
+                projectName="Dine restaurant"
+                githubLink="/"
+                liveLink="/"
+              ></ProjectsLink>
+            </StyledList>
+          </StyledListWrapper>
+        </StyledCon>
+      </PageContainer>
+    </>
   );
 }
 

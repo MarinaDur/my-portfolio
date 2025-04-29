@@ -2,12 +2,14 @@ import styled, { css } from "styled-components";
 
 interface PageTitleProps {
   $page?: string;
+  $color?: string;
 }
 
 const PageTitle = styled.h1<PageTitleProps>`
-  font-size: 4rem;
-  font-family: "Genos", sans-serif;
+  font-size: 3rem;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
+  color: ${(props) => props.$color || "var(--dark)"};
 
   ${(props) =>
     props.as === "h2" &&
@@ -20,8 +22,8 @@ const PageTitle = styled.h1<PageTitleProps>`
   ${(props) =>
     props.as === "h3" &&
     css`
-      font-family: "Genos", sans-serif;
-      font-size: 3rem;
+      font-family: "Montserrat", sans-serif;
+      font-size: 2.5rem;
     `}
 
   @media (min-width: 1024px) {
@@ -34,9 +36,15 @@ const PageTitle = styled.h1<PageTitleProps>`
       `}
 
     ${(props) =>
+      props.$page === "contact" &&
+      css`
+        font-size: clamp(12rem, 12vw, 15rem);
+      `}
+
+    ${(props) =>
       props.as === "h3" &&
       css`
-        font-size: 4rem;
+        font-size: 2rem;
       `}
   }
 `;

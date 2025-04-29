@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Genos, Poiret_One, Roboto } from "next/font/google";
+// import localFont from "next/font/local";
+import { Montserrat, Poiret_One, Roboto } from "next/font/google";
 import StyledComponentsRegistry from "./StyledComponentsRegistry";
 import Main from "./components/Main";
 
@@ -13,10 +14,26 @@ const poiretOne = Poiret_One({
   subsets: ["latin"],
 });
 
-const genos = Genos({
+const montserrat = Montserrat({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
+
+// const qara = localFont({
+//   src: "./fonts/Qara.ttf",
+//   display: "swap",
+//   weight: "400",
+//   style: "normal",
+//   variable: "--font-grytha-angel", // optional CSS variable
+//   fallback: ["sans-serif"], // optional fallback
+//   // 👇 force a proper name so it's easier to use and debug
+//   declarations: [
+//     {
+//       prop: "font-family",
+//       value: "'Benjola'",
+//     },
+//   ],
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,7 +49,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         lang="en"
-        className={`${roboto.className} ${poiretOne.className} $ ${genos.className}`}
+        className={`${roboto.className} ${montserrat.className} ${poiretOne.className} `}
       >
         <StyledComponentsRegistry>
           <Main>{children}</Main>

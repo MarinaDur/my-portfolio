@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { styled } from "styled-components";
+import { startPageTransition } from "../utils/startPageTransition";
+import { useRouter } from "next/navigation";
 
 interface NavItem {
   link: string;
@@ -8,14 +10,21 @@ interface NavItem {
 
 interface NavigationProps {
   navItems: NavItem[];
+  color?: string;
+}
+interface StyledNavigationProps {
+  $color?: string;
 }
 
-const StyledNavigation = styled.nav`
+const StyledNavigation = styled.nav<StyledNavigationProps>`
+  color: ${(props) => props.$color || "var(--dark)"};
   display: flex;
   flex-direction: row;
   gap: 2rem;
   margin: 3rem 3rem 0 3rem;
-  position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 999;
 
   &::after {
     content: "";
@@ -23,9 +32,10 @@ const StyledNavigation = styled.nav`
     bottom: -2px;
     left: 0;
     position: absolute;
-    width: 50%;
+    width: 150px;
     height: 2px;
     transition: width 0.3s;
+    background: ${(props) => props.$color || "var(--dark)"};
   }
 
   @media (min-width: 1024px) {
@@ -35,6 +45,7 @@ const StyledNavigation = styled.nav`
     padding-bottom: 3px;
     padding-left: 10px;
     justify-self: normal;
+    position: static;
 
     &::after {
       width: 190px;
@@ -43,17 +54,36 @@ const StyledNavigation = styled.nav`
 `;
 
 const StyledNavigationItem = styled(Link)`
-  /* color: var(--cl-primary-text-light); */
-  font-family: "Genos", sans-serif;
-  font-size: 1.5rem;
+  color: var(--cl-primary-text-light);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
   font-weight: 700;
+  position: relative;
 `;
 
-function Navigation({ navItems }: NavigationProps) {
+function Navigation({ navItems, color }: NavigationProps) {
+  const router = useRouter();
+
+  const handleTransition = async (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    href: string
+  ) => {
+    e.preventDefault();
+    startPageTransition();
+    router.push(href);
+  };
   return (
-    <StyledNavigation>
+    <StyledNavigation $color={color}>
       {navItems.map((item, index) => (
-        <StyledNavigationItem key={index} href={item.link}>
+        <StyledNavigationItem
+          key={index}
+          href={item.link}
+          onClick={
+            item.link === "/"
+              ? (e) => handleTransition(e, item.link)
+              : undefined
+          }
+        >
           {item.name}
         </StyledNavigationItem>
       ))}

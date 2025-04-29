@@ -15,7 +15,7 @@ const StyledButton = styled.button`
   cursor: pointer;
   color: var(--dark);
   text-align: left;
-  font-family: "Raleway", sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-top: -1rem;
 
   &:hover {

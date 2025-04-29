@@ -7,12 +7,19 @@ import GlobalStyles from "../../../styles/GlobalStyles";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const StyledMain = styled.main`
+interface StyledMainProps {
+  $backgroundColor?: string;
+  $color?: string;
+}
+
+const StyledMain = styled.main<StyledMainProps>`
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* background: ${(props) => props.$backgroundColor};
+  color: ${(props) => props.$color}; */
 
   @media (min-width: 1024px) {
     height: 100vh;
@@ -37,6 +44,11 @@ function Main({ children }: { children: React.ReactNode }) {
         ]
       : [{ link: "/", name: "Home" }];
 
+  let color = "#282727"; // default dark
+  if (pathname === "/projects" || pathname === "/contact") {
+    color = "#e9e2e2"; // light for projects or contact
+  }
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -44,10 +56,11 @@ function Main({ children }: { children: React.ReactNode }) {
   if (!mounted) return null;
 
   return (
+    // <StyledMain $backgroundColor={backgroundColor} $color={color}>
     <StyledMain>
       <GlobalStyles />
       <StyledLayout>
-        <Navigation navItems={navItems} />
+        <Navigation navItems={navItems} color={color} />
         {children}
       </StyledLayout>
     </StyledMain>

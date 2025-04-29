@@ -10,11 +10,11 @@ interface InputFieldProps {
 
 const StyledInputField = styled.input`
   width: 100%;
-  border-bottom: 2px solid var(--dark);
-  font-size: 1.6rem;
+  border-bottom: 2px solid var(--light);
+  font-size: 1.4rem;
   color: var(--dark);
   padding-bottom: 1rem;
-  font-family: "Raleway", sans-serif;
+  font-family: "Montserrat", sans-serif;
 
   &::placeholder {
     color: #bbb6b6;

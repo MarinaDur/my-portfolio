@@ -20,6 +20,12 @@ const StyledForm = styled.form`
   @media (min-width: 430px) {
     gap: 6rem;
   }
+  @media (min-width: 1024px) {
+    gap: 2rem;
+    justify-content: flex-end;
+    margin-top: 0;
+    width: 45%;
+  }
 `;
 
 const StyledInputCon = styled.label`
@@ -49,7 +55,7 @@ function Form() {
         <InputField
           type="text"
           name="name"
-          placeholder="Please enter your name"
+          placeholder="Name"
           value={formData.name}
           handleInput={handleInputChange}
         />
@@ -58,7 +64,7 @@ function Form() {
         <InputField
           type="text"
           name="email"
-          placeholder="Please enter your email"
+          placeholder="Email"
           value={formData.email}
           handleInput={handleInputChange}
         />
@@ -66,7 +72,7 @@ function Form() {
       <StyledInputCon>
         <TextAreaInput
           name="message"
-          placeholder="Please enter your message"
+          placeholder="Message"
           value={formData.message}
           handleInput={handleInputChange}
         />

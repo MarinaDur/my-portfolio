@@ -11,6 +11,7 @@ interface PageContainerProps {
   position?: string;
   minHeight?: string;
   alignItems?: string;
+  bg?: string;
 }
 
 interface StyledPageContainerProps {
@@ -23,16 +24,22 @@ interface StyledPageContainerProps {
   $position?: string;
   $minHeight?: string;
   $alignItems?: string;
+  $bg?: string;
 }
 
 const StyledPageContainer = styled.div<StyledPageContainerProps>`
   display: flex;
   flex-direction: column;
-  padding: ${(props) => props.$padding || "3rem"};
+  padding: ${(props) => props.$padding || "8rem 3rem 0 3rem"};
   gap: ${(props) => props.$gap || "2rem"};
   height: ${(props) => props.$height || "calc(100vh - 18.4px - 3rem)"};
+  /* height: 100vh; */
   width: 100%;
   max-width: 1500px;
+
+  @media (max-width: 767px) {
+    background: ${(props) => props.$bg || "var(--light)"};
+  }
 
   @media (min-width: 1024px) {
     flex-direction: row;
@@ -65,6 +72,7 @@ function PageContainer({
   minHeight,
   position,
   alignItems,
+  bg,
 }: PageContainerProps) {
   return (
     <StyledPageContainer
@@ -77,6 +85,7 @@ function PageContainer({
       $minHeight={minHeight}
       $position={position}
       $alignItems={alignItems}
+      $bg={bg}
     >
       {children}
     </StyledPageContainer>

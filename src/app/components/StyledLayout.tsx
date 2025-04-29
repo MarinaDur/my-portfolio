@@ -10,7 +10,7 @@ const StyledStyledLayout = styled.div`
   @media (min-width: 1024px) {
     /* grid-template-columns: 80px auto; */
     grid-template-columns: 5% 95%;
-    grid-template-rows: auto auto;
+    grid-template-rows: min(460px, 100vh);
     /* width: 100vw; */
     justify-items: center;
     width: 100%;

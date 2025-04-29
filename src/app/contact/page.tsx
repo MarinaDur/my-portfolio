@@ -3,28 +3,39 @@
 import { styled } from "styled-components";
 import PageTitle from "../ui/PageTitle";
 import PageContainer from "../ui/PageContainer";
-import { useEffect } from "react";
 import Form from "../components/Form";
+import Paragraph from "../ui/Paragraph";
+import PageBg from "../ui/PageBg";
+import { useEffect } from "react";
+import { animateOut } from "../utils/aminateOut";
 
-const Styledpage = styled.div``;
+const TitleContainer = styled.div`
+  color: var(--light);
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
+`;
 
 function ContactPage() {
   useEffect(() => {
-    document.documentElement.style.setProperty("--light", "#282727");
-    document.documentElement.style.setProperty("--dark", "#e9e2e2");
-
-    return () => {
-      document.documentElement.style.removeProperty("--light");
-      document.documentElement.style.removeProperty("--dark");
-    };
+    animateOut();
   }, []);
   return (
-    <Styledpage>
-      <PageContainer>
-        <PageTitle as="h2">Contact</PageTitle>
+    <>
+      <PageBg bgColor="var(--dark)" />
+      <PageContainer bg="var(--dark)" height="100vh">
+        <TitleContainer>
+          <PageTitle as="h2" $page="contact" $color="var(--light)">
+            Let&apos;s Talk
+          </PageTitle>
+          <Paragraph $fontSize="2.3rem">
+            Got a question, a project, or just want to say hi? Drop me a message
+            — I&apos;d love to hear from you!
+          </Paragraph>
+        </TitleContainer>
         <Form />
       </PageContainer>
-    </Styledpage>
+    </>
   );
 }
 

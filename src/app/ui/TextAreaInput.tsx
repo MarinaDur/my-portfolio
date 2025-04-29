@@ -8,14 +8,14 @@ interface InputTextAreaFieldProps {
 }
 
 const StyledTextAreaField = styled.textarea`
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   height: 10rem;
   border: none;
-  border-bottom: 2px solid var(--dark);
+  border-bottom: 2px solid var(--light);
   outline: none;
   width: 100%;
   resize: none;
-  font-family: "Raleway", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--dark);
 
   &::placeholder {
