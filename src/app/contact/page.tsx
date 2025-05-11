@@ -7,7 +7,7 @@ import Form from "../components/Form";
 import Paragraph from "../ui/Paragraph";
 import PageBg from "../ui/PageBg";
 import { useEffect } from "react";
-import { animateOut } from "../utils/aminateOut";
+import { animateOut } from "../frontUtils/aminateOut";
 
 const TitleContainer = styled.div`
   color: var(--light);

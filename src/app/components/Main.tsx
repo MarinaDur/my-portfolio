@@ -16,7 +16,7 @@ const StyledMain = styled.main<StyledMainProps>`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;
+  /* width: 100vw; */
   /* overflow: hidden; */
   /* background: ${(props) => props.$backgroundColor};
   color: ${(props) => props.$color}; */

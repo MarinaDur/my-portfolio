@@ -12,6 +12,7 @@ const StyledForm = styled.form`
   margin-top: 2rem;
   height: 100%;
   justify-content: center;
+  padding-bottom: 2rem;
   /* align-self: center; */
 
   @media (min-width: 390px) {

@@ -7,20 +7,26 @@ interface ButtonProps {
 
 const StyledButton = styled.button`
   width: 100%;
-  font-size: 3rem;
+  font-size: 1.5rem;
   /* border-radius: 20px; */
   background: transparent;
   border: none;
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   cursor: pointer;
-  color: var(--dark);
+  color: var(--light);
   text-align: left;
   font-family: "Montserrat", sans-serif;
   margin-top: -1rem;
 
   &:hover {
-    background: var(--light);
-    /* color: #fff; */
+    transform: scale(1.2); /* color: #fff; */
+  }
+
+  @media (min-width: 390px) {
+    font-size: 2rem;
+  }
+  @media (min-width: 430px) {
+    font-size: 2.3rem;
   }
 `;
 

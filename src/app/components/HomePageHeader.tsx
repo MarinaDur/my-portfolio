@@ -18,7 +18,7 @@ export default function HomePageHeader() {
   return (
     <StyledHeader>
       <PageTitle>Marina Durmishov</PageTitle>
-      <Paragraph $fontSize="1.3rem">
+      <Paragraph $fontSize="clamp(1.3rem, 1vw, 2.5rem)">
         Hey there! I&apos;m Marina, a Full-Stack Developer with a knack for
         creating seamless user experiences. From frontend aesthetics to backend
         logic, I love crafting web applications that are both functional and

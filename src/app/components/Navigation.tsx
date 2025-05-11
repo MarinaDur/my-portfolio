@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { styled } from "styled-components";
-import { startPageTransition } from "../utils/startPageTransition";
+import { startPageTransition } from "../frontUtils/startPageTransition";
 import { useRouter } from "next/navigation";
 
 interface NavItem {
@@ -48,7 +48,7 @@ const StyledNavigation = styled.nav<StyledNavigationProps>`
     position: static;
 
     &::after {
-      width: 190px;
+      width: 250px;
     }
   }
 `;
@@ -59,6 +59,14 @@ const StyledNavigationItem = styled(Link)`
   font-size: 1.2rem;
   font-weight: 700;
   position: relative;
+
+  &:hover {
+    letter-spacing: 2px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: clamp(1.2rem, 1vw, 2rem);
+  }
 `;
 
 function Navigation({ navItems, color }: NavigationProps) {
@@ -69,7 +77,8 @@ function Navigation({ navItems, color }: NavigationProps) {
     href: string
   ) => {
     e.preventDefault();
-    startPageTransition();
+
+    startPageTransition("#282727");
     router.push(href);
   };
   return (

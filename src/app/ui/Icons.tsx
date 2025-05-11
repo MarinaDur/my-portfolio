@@ -8,12 +8,11 @@ interface FontAwsomeIconsProps {
 
 const StyledIcons = styled(FontAwesomeIcon)`
   font-size: 20px;
-  color: var(--dark);
+  color: var(--light);
   transition: transform 0.3s ease-in-out;
 
   &:hover {
     transform: scale(1.2);
-    color: #000;
   }
 `;
 

@@ -30,7 +30,7 @@ body.page-transition::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #282727; 
+  background-color: var(--page-transition-color, #282727);
   z-index: 999999;
   transform: translateY(0%); 
   transition: transform 0.7s ease-in-out;
@@ -41,6 +41,39 @@ body.page-transition.page-transition-start::before {
   transform: translateY(-100%); 
 }
 
+
+body.page-content-hidden h1,
+body.page-content-hidden h2,
+body.page-content-hidden h3,
+body.page-content-hidden p,
+body.page-content-hidden a{
+  filter: blur(10px);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* When content becomes visible */
+body.page-content-visible h1,
+body.page-content-visible h2,
+body.page-content-visible h3,
+body.page-content-visible p{
+  filter: blur(0px);
+  opacity: 1;
+  transform: translateY(0);
+    transition: filter 0.6s ease, opacity 0.6s ease, transform 0.6s ease;
+
+}
+
+body.page-content-visible a {
+  filter: blur(0px);
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    filter 0.6s ease,
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    letter-spacing 0.7s ease-in-out; /* ✅ keep hover transition working */
+}
   /* Additional global styles */
   * {
     margin: 0;

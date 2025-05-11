@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { startPageTransition } from "../utils/startPageTransition";
+import { startPageTransition } from "../frontUtils/startPageTransition";
 
 interface TransitionLinkProps {
   href: string;
@@ -12,10 +12,10 @@ interface TransitionLinkProps {
 const StyledNavigationItem = styled.a`
   color: var(--cl-primary-text-light);
   font-family: "Poiret One", sans-serif;
-  /* font-family: oliviaCitrus, sans-serif; */
+  /* font-family: qara, sans-serif; */
   /* font-family: "Cormorant Infant", serif; */
   font-size: 7rem;
-  transition: all 0.8s ease-in-out;
+  /* transition: all 0.8s ease-in-out; */
   cursor: pointer;
 
   &:hover {
@@ -27,7 +27,7 @@ const StyledNavigationItem = styled.a`
     line-height: 1;
   }
   @media (min-width: 1280px) {
-    font-size: clamp(10rem, 13vw, 15rem);
+    font-size: clamp(10rem, 13vw, 18rem);
     line-height: 1;
   }
 `;
@@ -39,7 +39,8 @@ export const NavLink: React.FC<TransitionLinkProps> = ({ children, href }) => {
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     e.preventDefault();
-    startPageTransition();
+    const overlayColor = href === "/about" ? "#282727" : "#e9e2e2";
+    startPageTransition(overlayColor);
     router.push(href); // ✅ push immediately after adding the class
     // NO await sleep here!
   };

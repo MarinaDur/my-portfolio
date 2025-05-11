@@ -5,7 +5,7 @@ import HomePageHeader from "./components/HomePageHeader";
 import NavigationHomePage from "./components/NavigationHomePage";
 import PageBg from "./ui/PageBg";
 import PageContainer from "./ui/PageContainer";
-import { animateOut } from "./utils/aminateOut";
+import { animateOut } from "./frontUtils/aminateOut";
 
 export default function Home() {
   useEffect(() => {

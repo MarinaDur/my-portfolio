@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 interface PageTitleProps {
   $page?: string;
   $color?: string;
+  $fontSize?: string;
 }
 
 const PageTitle = styled.h1<PageTitleProps>`
@@ -41,10 +42,10 @@ const PageTitle = styled.h1<PageTitleProps>`
         font-size: clamp(12rem, 12vw, 15rem);
       `}
 
-    ${(props) =>
-      props.as === "h3" &&
+   ${({ as, $fontSize }) =>
+      as === "h3" &&
       css`
-        font-size: 2rem;
+        font-size: ${$fontSize || "2rem"};
       `}
   }
 `;

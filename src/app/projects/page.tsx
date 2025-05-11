@@ -7,7 +7,8 @@ import Paragraph from "../ui/Paragraph";
 import ProjectsLink from "../components/ProjectsLink";
 import PageBg from "../ui/PageBg";
 import { useEffect } from "react";
-import { animateOut } from "../utils/aminateOut";
+import { animateOut } from "../frontUtils/aminateOut";
+import FadeScrollWrapper from "../ui/FadeScrollWrapper";
 
 const StyledHeader = styled.div`
   color: var(--light);
@@ -41,7 +42,7 @@ const StyledList = styled.ul`
 `;
 
 const StyledListWrapper = styled.div`
-  height: 100vh;
+  /* height: 100vh; */
   overflow-y: scroll;
   will-change: transform;
   /* padding: 7rem 0 7rem 0; */
@@ -50,6 +51,10 @@ const StyledListWrapper = styled.div`
   padding-bottom: 4rem;
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (min-width: 768px) {
+    height: min-content;
   }
   @media (min-width: 1024px) {
     height: 100vh;
@@ -84,55 +89,59 @@ function ProjectsPage() {
           <PageTitle as="h2" $color="var(--light)">
             PROJECTS
           </PageTitle>
-          <Paragraph>Tech stack used across projects:</Paragraph>
-          <Paragraph>
+          <Paragraph $fontSize="clamp(1.5rem, 1.5vw, 2.3rem)">
+            Tech stack used across projects:
+          </Paragraph>
+          <Paragraph $fontSize="clamp(1.5rem, 1.5vw, 2.3rem)">
             React, TypeScript, Styled Components, Node.js, Express, MongoDB, and
             Mongoose
           </Paragraph>
         </StyledHeader>
         <StyledCon>
-          <StyledListWrapper>
-            <StyledList
+          <FadeScrollWrapper>
+            <StyledListWrapper>
+              <StyledList
 
-            // animate={{ y: "-100%" }}
-            // transition={{
-            //   duration: 15,
-            //   ease: "linear",
-            //   repeat: Infinity,
-            // }}
-            >
-              <ProjectsLink
-                projectName="Markdown Editor"
-                githubLink="/"
-                liveLink="/"
-              ></ProjectsLink>
-              <ProjectsLink
-                projectName="Tic Tac Toe Game"
-                githubLink="/"
-                liveLink="/"
-              ></ProjectsLink>
-              <ProjectsLink
-                projectName="IP Address Tracker"
-                githubLink="/"
-                liveLink="/"
-              ></ProjectsLink>
-              <ProjectsLink
-                projectName="FrontEnd Quiz"
-                githubLink="/"
-                liveLink="/"
-              ></ProjectsLink>
-              <ProjectsLink
-                projectName="Todo App"
-                githubLink="/"
-                liveLink="/"
-              ></ProjectsLink>
-              <ProjectsLink
-                projectName="Dine restaurant"
-                githubLink="/"
-                liveLink="/"
-              ></ProjectsLink>
-            </StyledList>
-          </StyledListWrapper>
+              // animate={{ y: "-100%" }}
+              // transition={{
+              //   duration: 15,
+              //   ease: "linear",
+              //   repeat: Infinity,
+              // }}
+              >
+                <ProjectsLink
+                  projectName="Markdown Editor"
+                  githubLink="/"
+                  liveLink="/"
+                ></ProjectsLink>
+                <ProjectsLink
+                  projectName="Tic Tac Toe Game"
+                  githubLink="/"
+                  liveLink="/"
+                ></ProjectsLink>
+                <ProjectsLink
+                  projectName="IP Address Tracker"
+                  githubLink="/"
+                  liveLink="/"
+                ></ProjectsLink>
+                <ProjectsLink
+                  projectName="FrontEnd Quiz"
+                  githubLink="/"
+                  liveLink="/"
+                ></ProjectsLink>
+                <ProjectsLink
+                  projectName="Todo App"
+                  githubLink="/"
+                  liveLink="/"
+                ></ProjectsLink>
+                <ProjectsLink
+                  projectName="Dine restaurant"
+                  githubLink="/"
+                  liveLink="/"
+                ></ProjectsLink>
+              </StyledList>
+            </StyledListWrapper>
+          </FadeScrollWrapper>
         </StyledCon>
       </PageContainer>
     </>

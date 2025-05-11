@@ -10,7 +10,7 @@ const StyledListItem = styled.li`
   align-items: center;
 
   @media (min-width: 1024px) {
-    align-items: flex-end;
+    align-items: flex-start;
   }
 `;
 
@@ -26,6 +26,9 @@ const StyledListIName = styled.p`
 const StyledIconsCon = styled.div`
   display: flex;
   gap: 1rem;
+  @media (min-width: 1024px) {
+    padding-left: 0.5rem;
+  }
 `;
 
 function ProjectsLink({
