@@ -46,7 +46,8 @@ body.page-content-hidden h1,
 body.page-content-hidden h2,
 body.page-content-hidden h3,
 body.page-content-hidden p,
-body.page-content-hidden a{
+body.page-content-hidden a,
+body.page-content-hidden form{
   filter: blur(10px);
   opacity: 0;
   transform: translateY(30px);
@@ -56,7 +57,8 @@ body.page-content-hidden a{
 body.page-content-visible h1,
 body.page-content-visible h2,
 body.page-content-visible h3,
-body.page-content-visible p{
+body.page-content-visible p,
+body.page-content-visible form{
   filter: blur(0px);
   opacity: 1;
   transform: translateY(0);

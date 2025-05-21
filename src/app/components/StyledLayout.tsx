@@ -6,6 +6,7 @@ const StyledStyledLayout = styled.div`
   grid-template-rows: auto auto;
   align-items: center;
   justify-content: center;
+  height: 100vh;
 
   @media (min-width: 1024px) {
     /* grid-template-columns: 80px auto; */
@@ -14,6 +15,7 @@ const StyledStyledLayout = styled.div`
     /* width: 100vw; */
     justify-items: center;
     width: 100%;
+    height: max-content;
   }
 `;
 

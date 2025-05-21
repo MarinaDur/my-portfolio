@@ -32,7 +32,7 @@ const StyledPageContainer = styled.div<StyledPageContainerProps>`
   flex-direction: column;
   padding: ${(props) => props.$padding || "8rem 3rem 0 3rem"};
   gap: ${(props) => props.$gap || "2rem"};
-  height: ${(props) => props.$height || "calc(100vh - 18.4px - 3rem)"};
+  /* height: ${(props) => props.$height || "calc(100vh - 18.4px - 3rem)"}; */
   /* height: 100vh; */
   width: 100%;
   max-width: 1500px;
@@ -48,7 +48,7 @@ const StyledPageContainer = styled.div<StyledPageContainerProps>`
     padding: 2rem 2rem 0 2rem;
     /* overflow: ${(props) => props.$overflow || "auto"};
     height: ${(props) => props.$heightBSize || "100%"}; */
-    height: 100%;
+    height: 100vh;
     gap: 2rem;
     min-height: ${(props) => props.$minHeight || "100%"};
     max-height: ${(props) => props.$maxHeight || "100%"};

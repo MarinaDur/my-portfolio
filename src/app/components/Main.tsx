@@ -6,6 +6,7 @@ import Navigation from "./Navigation";
 import GlobalStyles from "../../../styles/GlobalStyles";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 interface StyledMainProps {
   $backgroundColor?: string;
@@ -34,6 +35,7 @@ const StyledMain = styled.main<StyledMainProps>`
 function Main({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const queryClient = new QueryClient();
 
   // Define different nav items per route
   const navItems =
@@ -61,7 +63,9 @@ function Main({ children }: { children: React.ReactNode }) {
       <GlobalStyles />
       <StyledLayout>
         <Navigation navItems={navItems} color={color} />
-        {children}
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
       </StyledLayout>
     </StyledMain>
   );

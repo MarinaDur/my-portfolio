@@ -1,8 +1,17 @@
 import { styled } from "styled-components";
+import { AnimatePresence } from "framer-motion";
+import { useMutation } from "@tanstack/react-query";
 import InputField from "../ui/InputField";
 import { useState } from "react";
 import TextAreaInput from "../ui/TextAreaInput";
 import Button from "../ui/Button";
+import {
+  ContactFormInput,
+  ContactResponse,
+  submitContactDetails,
+} from "../utilsServer/apiContact";
+import UserMessages from "../ui/UserMessages";
+import FormLoader from "../ui/FormLoader";
 
 const StyledForm = styled.form`
   width: 100%;
@@ -22,10 +31,11 @@ const StyledForm = styled.form`
     gap: 6rem;
   }
   @media (min-width: 1024px) {
-    gap: 2rem;
+    gap: 4rem;
     justify-content: flex-end;
     margin-top: 0;
     width: 45%;
+    padding-bottom: 0rem;
   }
 `;
 
@@ -33,11 +43,38 @@ const StyledInputCon = styled.label`
   position: relative;
 `;
 
+const ErrorMessage = styled.p`
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+`;
+
 function Form() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
+  });
+
+  const [errors, setErrors] = useState<{
+    name?: string;
+    email?: string;
+    message?: string;
+  }>({});
+
+  const { mutate, isPending, isError, error, isSuccess } = useMutation<
+    ContactResponse,
+    Error,
+    ContactFormInput
+  >({
+    mutationFn: submitContactDetails,
+    onSuccess: () => {
+      setFormData({ name: "", email: "", message: "" });
+      console.log("Contact form submitted successfully");
+    },
+    onError: (error) => {
+      console.error("Error submitting contact form", error);
+    },
   });
 
   const handleInputChange = (
@@ -49,9 +86,44 @@ function Form() {
       ...prev,
       [name]: value,
     }));
+
+    if (value.trim() !== "") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: undefined,
+      }));
+    }
+  };
+
+  const isValidEmail = (email: string) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newErrors: typeof errors = {};
+
+    if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.message) newErrors.message = "Message is required";
+
+    if (formData.email && !isValidEmail(formData.email)) {
+      newErrors.email = "Please enter a valid email";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      mutate({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      });
+    }
   };
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit}>
       <StyledInputCon>
         <InputField
           type="text"
@@ -60,6 +132,11 @@ function Form() {
           value={formData.name}
           handleInput={handleInputChange}
         />
+        <AnimatePresence mode="wait">
+          {errors.name && (
+            <UserMessages message={errors.name} messageType="errorInput" />
+          )}
+        </AnimatePresence>
       </StyledInputCon>
       <StyledInputCon>
         <InputField
@@ -69,6 +146,11 @@ function Form() {
           value={formData.email}
           handleInput={handleInputChange}
         />
+        <AnimatePresence mode="wait">
+          {errors.email && (
+            <UserMessages message={errors.email} messageType="errorInput" />
+          )}
+        </AnimatePresence>
       </StyledInputCon>
       <StyledInputCon>
         <TextAreaInput
@@ -77,9 +159,32 @@ function Form() {
           value={formData.message}
           handleInput={handleInputChange}
         />
+        <AnimatePresence mode="wait">
+          {errors.message && (
+            <UserMessages message={errors.message} messageType="errorInput" />
+          )}
+        </AnimatePresence>
       </StyledInputCon>
       <StyledInputCon>
-        <Button type="submit">Submit</Button>
+        <StyledInputCon>
+          <Button type="submit">
+            {isPending ? (
+              <FormLoader />
+            ) : isSuccess ? (
+              "Got it! Thanks for reaching out."
+            ) : (
+              "Submit"
+            )}
+          </Button>
+          <AnimatePresence mode="wait">
+            {isError && Object.keys(errors).length === 0 ? (
+              <UserMessages
+                message="Couldn’t send your message. Please try again."
+                messageType="errorSubmit"
+              />
+            ) : null}
+          </AnimatePresence>
+        </StyledInputCon>
       </StyledInputCon>
     </StyledForm>
   );

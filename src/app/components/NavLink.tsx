@@ -41,8 +41,8 @@ export const NavLink: React.FC<TransitionLinkProps> = ({ children, href }) => {
     e.preventDefault();
     const overlayColor = href === "/about" ? "#282727" : "#e9e2e2";
     startPageTransition(overlayColor);
-    router.push(href); // ✅ push immediately after adding the class
-    // NO await sleep here!
+    router.push(href); // push immediately after adding the class
+ 
   };
 
   return (

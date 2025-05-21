@@ -16,7 +16,7 @@ const StyledTextAreaField = styled.textarea`
   width: 100%;
   resize: none;
   font-family: "Montserrat", sans-serif;
-  color: var(--dark);
+  color: var(--light);
 
   &::placeholder {
     color: #bbb6b6;
@@ -27,6 +27,10 @@ const StyledTextAreaField = styled.textarea`
   }
   @media (min-width: 430px) {
     font-size: 2.3rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: clamp(1.5rem, 1vw, 1.8rem);
   }
 `;
 
