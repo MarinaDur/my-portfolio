@@ -106,7 +106,7 @@ export default function WelcomeScreen() {
   return (
     <Overlay $animate={startOverlaySlide}>
       <AnimatedTitle $exit={startTextExit}>
-        Welcome to my portfoli
+        Welcome to my portfolio
       </AnimatedTitle>
     </Overlay>
   );
