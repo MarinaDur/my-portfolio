@@ -7,6 +7,7 @@ import GlobalStyles from "../../../styles/GlobalStyles";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import WelcomeScreen from "../ui/WelcomeLoadScreen";
 
 interface StyledMainProps {
   $backgroundColor?: string;
@@ -61,6 +62,7 @@ function Main({ children }: { children: React.ReactNode }) {
     // <StyledMain $backgroundColor={backgroundColor} $color={color}>
     <StyledMain>
       <GlobalStyles />
+      <WelcomeScreen />
       <StyledLayout>
         <Navigation navItems={navItems} color={color} />
         <QueryClientProvider client={queryClient}>

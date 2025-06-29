@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <PageBg bgColor="var(--light)" />
-      <PageContainer>
+      <PageContainer gap="4rem">
         <HomePageHeader />
         <NavigationHomePage />
       </PageContainer>

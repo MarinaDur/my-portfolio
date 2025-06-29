@@ -2,6 +2,7 @@ import Link from "next/link";
 import { styled } from "styled-components";
 import { startPageTransition } from "../frontUtils/startPageTransition";
 import { useRouter } from "next/navigation";
+import CopyRights from "../ui/CopyRights";
 
 interface NavItem {
   link: string;
@@ -19,36 +20,52 @@ interface StyledNavigationProps {
 const StyledNavigation = styled.nav<StyledNavigationProps>`
   color: ${(props) => props.$color || "var(--dark)"};
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   gap: 2rem;
   margin: 3rem 3rem 0 3rem;
   position: fixed;
   top: 0;
   z-index: 999;
+  justify-content: space-between;
+  width: 83%;
+  align-items: flex-end;
 
+  @media (min-width: 1024px) {
+    flex-direction: row;
+
+    align-self: flex-end;
+    align-items: center;
+    transform: rotate(-90deg);
+    /* margin-bottom: 50px; */
+    /* padding-bottom: 3px;
+    padding-left: 10px; */
+    justify-self: normal;
+    position: static;
+    gap: 13rem;
+  }
+`;
+
+const StyledNavcContainer = styled.div<StyledNavigationProps>`
+  gap: 1rem;
+  display: flex;
   &::after {
     content: "";
     display: block;
-    bottom: -2px;
-    left: 0;
+    bottom: 5px;
+    left: 45%;
     position: absolute;
-    width: 150px;
-    height: 2px;
+    width: 100px;
+    height: 1px;
     transition: width 0.3s;
     background: ${(props) => props.$color || "var(--dark)"};
   }
 
   @media (min-width: 1024px) {
-    align-self: flex-end;
-    transform: rotate(-90deg);
-    /* margin-bottom: 50px; */
-    padding-bottom: 3px;
-    padding-left: 10px;
-    justify-self: normal;
-    position: static;
-
+    gap: 2rem;
     &::after {
-      width: 250px;
+      width: 80px;
+      bottom: 6px;
+      left: 70px;
     }
   }
 `;
@@ -65,7 +82,7 @@ const StyledNavigationItem = styled(Link)`
   }
 
   @media (min-width: 1024px) {
-    font-size: clamp(1.2rem, 1vw, 2rem);
+    font-size: clamp(1.1rem, 0.8vw, 1.8rem);
   }
 `;
 
@@ -83,19 +100,23 @@ function Navigation({ navItems, color }: NavigationProps) {
   };
   return (
     <StyledNavigation $color={color}>
-      {navItems.map((item, index) => (
-        <StyledNavigationItem
-          key={index}
-          href={item.link}
-          onClick={
-            item.link === "/"
-              ? (e) => handleTransition(e, item.link)
-              : undefined
-          }
-        >
-          {item.name}
-        </StyledNavigationItem>
-      ))}
+      <CopyRights />
+
+      <StyledNavcContainer $color={color}>
+        {navItems.map((item, index) => (
+          <StyledNavigationItem
+            key={index}
+            href={item.link}
+            onClick={
+              item.link === "/"
+                ? (e) => handleTransition(e, item.link)
+                : undefined
+            }
+          >
+            {item.name}
+          </StyledNavigationItem>
+        ))}
+      </StyledNavcContainer>
     </StyledNavigation>
   );
 }
