@@ -11,7 +11,7 @@ export type ContactResponse = {
   message: string;
 };
 
-const BASE_URL = `/api/contactttt`;
+const BASE_URL = `/api/contact`;
 
 export async function submitContactDetails({
   name,

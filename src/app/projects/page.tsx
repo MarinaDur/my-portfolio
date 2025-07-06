@@ -111,33 +111,33 @@ function ProjectsPage() {
               >
                 <ProjectsLink
                   projectName="Markdown Editor"
-                  githubLink="/"
-                  liveLink="/"
+                  githubLink="https://github.com/MarinaDur/markdown-editor.git"
+                  liveLink="https://markdowneditorfullstack.netlify.app/"
                 ></ProjectsLink>
                 <ProjectsLink
                   projectName="Tic Tac Toe Game"
-                  githubLink="/"
-                  liveLink="/"
+                  githubLink="https://github.com/MarinaDur/tic-tac-toe.git"
+                  liveLink="https://tic-tac-toe-game-with-cpu.netlify.app/"
                 ></ProjectsLink>
                 <ProjectsLink
                   projectName="IP Address Tracker"
-                  githubLink="/"
-                  liveLink="/"
+                  githubLink="https://github.com/MarinaDur/ip-address-tracker.git"
+                  liveLink="https://ip-address-tracker-master-react.netlify.app/"
                 ></ProjectsLink>
                 <ProjectsLink
                   projectName="FrontEnd Quiz"
-                  githubLink="/"
-                  liveLink="/"
+                  githubLink="https://github.com/MarinaDur/frontend-quiz.git"
+                  liveLink="https://frontend-quiz-app-reactjs.netlify.app/"
                 ></ProjectsLink>
                 <ProjectsLink
                   projectName="Todo App"
-                  githubLink="/"
-                  liveLink="/"
+                  githubLink="https://github.com/MarinaDur/todo-app.git"
+                  liveLink="https://todo-app-main-react-js.netlify.app/"
                 ></ProjectsLink>
                 <ProjectsLink
                   projectName="Dine restaurant"
-                  githubLink="/"
-                  liveLink="/"
+                  githubLink="https://github.com/MarinaDur/dine-restaurant.git"
+                  liveLink="https://dine-restaurant-reactjs.netlify.app/"
                 ></ProjectsLink>
               </StyledList>
             </StyledListWrapper>
