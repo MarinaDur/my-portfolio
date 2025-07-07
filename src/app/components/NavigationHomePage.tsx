@@ -7,10 +7,11 @@ const StyledNavigationHomePage = styled.nav`
   gap: 4rem;
   height: 100%;
   justify-content: center;
+  width: 90%;
 
   @media (min-width: 1024px) {
-    justify-content: flex-end;
-    width: 60%;
+    justify-content: center;
+    width: fit-content;
     align-items: flex-start;
     gap: 0;
   }

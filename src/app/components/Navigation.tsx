@@ -19,35 +19,32 @@ interface StyledNavigationProps {
 }
 
 const StyledNavigation = styled.nav<StyledNavigationProps>`
-  color: ${(props) => props.$color || "var(--dark)"};
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 2rem;
-  margin: 3rem 3rem 0 3rem;
   position: fixed;
-  top: 0;
+  transform: translateX(-50%);
+  top: 2rem;
+  left: 50%;
   z-index: 999;
+  display: flex;
+  gap: 14rem;
+  color: ${(props) => props.$color || "var(--dark)"};
+  flex-direction: row-reverse;
+  width: 90%;
   justify-content: space-between;
-  width: 83%;
-  align-items: flex-end;
 
   @media (min-width: 1024px) {
+    position: absolute;
+    top: 70%;
+    left: 5vw;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left center;
     flex-direction: row;
-
-    align-self: flex-end;
-    align-items: center;
-    transform: rotate(-90deg);
-    /* margin-bottom: 50px; */
-    /* padding-bottom: 3px;
-    padding-left: 10px; */
-    justify-self: normal;
-    position: static;
-    gap: 13rem;
+    width: 30%;
+    justify-content: flex-start;
   }
 `;
 
 const StyledNavcContainer = styled.div<StyledNavigationProps>`
-  gap: 1rem;
+  gap: 2rem;
   display: flex;
   &::after {
     content: "";

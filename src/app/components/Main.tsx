@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "styled-components";
-import StyledLayout from "./StyledLayout";
+// import StyledLayout from "./StyledLayout";
 import Navigation from "./Navigation";
 import GlobalStyles from "../../../styles/GlobalStyles";
 import { usePathname } from "next/navigation";
@@ -19,19 +19,16 @@ interface StyledMainProps {
 const StyledMain = styled.main<StyledMainProps>`
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  /* width: 100vw; */
-  /* overflow: hidden; */
-  /* background: ${(props) => props.$backgroundColor};
-  color: ${(props) => props.$color}; */
+  min-height: 100vh;
+  position: relative;
+  align-items: center;
+  justify-content: center;
 
   @media (min-width: 1024px) {
     height: 100vh;
     align-items: center;
-    justify-content: center;
     display: flex;
     overflow: hidden;
-    position: relative;
   }
 `;
 
@@ -74,12 +71,10 @@ function Main({ children }: { children: React.ReactNode }) {
     <StyledMain>
       <GlobalStyles />
       <WelcomeScreen />
-      <StyledLayout>
-        <Navigation navItems={navItems} color={color} />
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
-      </StyledLayout>
+      {/* <StyledLayout> */}
+      <Navigation navItems={navItems} color={color} />
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      {/* </StyledLayout> */}
     </StyledMain>
   );
 }

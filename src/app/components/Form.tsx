@@ -35,7 +35,7 @@ const StyledForm = styled.form`
     justify-content: flex-end;
     margin-top: 0;
     width: 40%;
-    padding-bottom: 0rem;
+    padding-bottom: 8rem;
   }
 `;
 
@@ -43,11 +43,11 @@ const StyledInputCon = styled.label`
   position: relative;
 `;
 
-const ErrorMessage = styled.p`
-  color: red;
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-`;
+// const ErrorMessage = styled.p`
+//   color: red;
+//   font-size: 0.875rem;
+//   margin-top: 0.5rem;
+// `;
 
 function Form() {
   const [formData, setFormData] = useState({
@@ -62,7 +62,7 @@ function Form() {
     message?: string;
   }>({});
 
-  const { mutate, isPending, isError, error, isSuccess } = useMutation<
+  const { mutate, isPending, isError, _error, isSuccess } = useMutation<
     ContactResponse,
     Error,
     ContactFormInput

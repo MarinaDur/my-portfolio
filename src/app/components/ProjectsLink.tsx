@@ -7,7 +7,7 @@ const StyledListItem = styled.li`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  align-items: center;
+  align-items: left;
 
   @media (min-width: 1024px) {
     align-items: flex-start;
