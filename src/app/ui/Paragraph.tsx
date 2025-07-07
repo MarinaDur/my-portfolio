@@ -5,16 +5,16 @@ interface ParagraphProps {
 }
 
 const Paragraph = styled.p<ParagraphProps>`
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   line-height: 1.5;
 
   @media (min-width: 390px) and (max-width: 430px) {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   @media (min-width: 430px) and (max-width: 1023px) {
-    font-size: 2.3rem;
+    font-size: 1.7rem;
   }
 
   @media (min-width: 1024px) {

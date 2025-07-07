@@ -12,6 +12,7 @@ import FadeScrollWrapper from "../ui/FadeScrollWrapper";
 
 const StyledHeader = styled.div`
   color: var(--light);
+
   @media (min-width: 1024px) {
     width: 40%;
   }
@@ -86,7 +87,7 @@ function ProjectsPage() {
         bg="var(--dark)"
       >
         <StyledHeader>
-          <PageTitle as="h2" $color="var(--light)">
+          <PageTitle as="h2" $color="var(--light)" $page="projects">
             PROJECTS
           </PageTitle>
           <Paragraph $fontSize="clamp(1.5rem, 1.5vw, 2.3rem)">

@@ -5,8 +5,8 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyles = createGlobalStyle`
 
 :root{
-    --dark: #282727;
-    --light: #e9e2e2;
+    --dark: #1E1E1E;
+    --light:#F5F5F5;
 
 }
 

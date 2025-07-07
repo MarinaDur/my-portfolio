@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import { startPageTransition } from "../frontUtils/startPageTransition";
+import colors from "../../../styles/colors";
 
 interface TransitionLinkProps {
   href: string;
@@ -19,7 +20,7 @@ const StyledNavigationItem = styled.a`
   cursor: pointer;
 
   &:hover {
-    letter-spacing: 4px;
+    letter-spacing: 8px;
   }
 
   @media (min-width: 1024px) {
@@ -39,10 +40,9 @@ export const NavLink: React.FC<TransitionLinkProps> = ({ children, href }) => {
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     e.preventDefault();
-    const overlayColor = href === "/about" ? "#282727" : "#e9e2e2";
+    const overlayColor = href === "/about" ? colors.dark : colors.light;
     startPageTransition(overlayColor);
     router.push(href); // push immediately after adding the class
- 
   };
 
   return (

@@ -12,6 +12,7 @@ interface PageContainerProps {
   minHeight?: string;
   alignItems?: string;
   bg?: string;
+  justifyContent?: string;
 }
 
 interface StyledPageContainerProps {
@@ -25,6 +26,7 @@ interface StyledPageContainerProps {
   $minHeight?: string;
   $alignItems?: string;
   $bg?: string;
+  $justifyContent?: string;
 }
 
 const StyledPageContainer = styled.div<StyledPageContainerProps>`
@@ -39,12 +41,14 @@ const StyledPageContainer = styled.div<StyledPageContainerProps>`
 
   @media (max-width: 767px) {
     background: ${(props) => props.$bg || "var(--light)"};
+    /* padding: 1rem;
+    align-items: center; */
   }
 
   @media (min-width: 1024px) {
     flex-direction: row;
     padding-bottom: 0;
-    justify-content: space-between;
+    justify-content: ${(props) => props.$justifyContent || "space-between"};
     padding: 2rem 2rem 0 2rem;
     /* overflow: ${(props) => props.$overflow || "auto"};
     height: ${(props) => props.$heightBSize || "100%"}; */
@@ -73,6 +77,7 @@ function PageContainer({
   position,
   alignItems,
   bg,
+  justifyContent,
 }: PageContainerProps) {
   return (
     <StyledPageContainer
@@ -86,6 +91,7 @@ function PageContainer({
       $position={position}
       $alignItems={alignItems}
       $bg={bg}
+      $justifyContent={justifyContent}
     >
       {children}
     </StyledPageContainer>

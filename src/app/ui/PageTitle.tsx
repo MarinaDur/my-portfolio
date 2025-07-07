@@ -4,10 +4,11 @@ interface PageTitleProps {
   $page?: string;
   $color?: string;
   $fontSize?: string;
+  $variant?: string;
 }
 
 const PageTitle = styled.h1<PageTitleProps>`
-  font-size: 3rem;
+  font-size: 2rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
   color: ${(props) => props.$color || "var(--dark)"};
@@ -17,7 +18,7 @@ const PageTitle = styled.h1<PageTitleProps>`
     css`
       font-family: "Poiret One", sans-serif;
 
-      font-size: 7rem;
+      font-size: 4rem;
     `}
 
   ${(props) =>
@@ -28,7 +29,7 @@ const PageTitle = styled.h1<PageTitleProps>`
     `}
 
   @media (min-width: 1024px) {
-    font-size: clamp(4rem, 3vw, 8rem);
+    font-size: clamp(2rem, 2vw, 5rem);
 
     ${(props) =>
       props.$page === "about" &&
@@ -40,6 +41,12 @@ const PageTitle = styled.h1<PageTitleProps>`
       props.$page === "contact" &&
       css`
         font-size: clamp(12rem, 12vw, 15rem);
+      `}
+
+    ${(props) =>
+      props.$page === "projects" &&
+      css`
+        font-size: clamp(7rem, 5vw, 10rem);
       `}
 
    ${({ as, $fontSize }) =>

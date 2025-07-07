@@ -8,9 +8,9 @@ const StyledHeader = styled.header`
   gap: 1rem;
 
   @media (min-width: 1024px) {
-    width: 36%;
+    width: 25%;
     gap: 0;
-    text-align: right;
+    text-align: left;
   }
 `;
 
@@ -18,11 +18,9 @@ export default function HomePageHeader() {
   return (
     <StyledHeader>
       <PageTitle>Marina Durmishov</PageTitle>
-      <Paragraph $fontSize="clamp(1.3rem, 1vw, 2.5rem)">
-        Hey there! I&apos;m Marina, a Full-Stack Developer with a knack for
-        creating seamless user experiences. From frontend aesthetics to backend
-        logic, I love crafting web applications that are both functional and
-        elegant. Let&apos;s build something great!
+      <Paragraph $fontSize="clamp(1rem, 1vw, 2rem)">
+        Full-Stack Developer with a knack for creating seamless user
+        experiences.
       </Paragraph>
     </StyledHeader>
   );

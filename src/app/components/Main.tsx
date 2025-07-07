@@ -5,9 +5,11 @@ import StyledLayout from "./StyledLayout";
 import Navigation from "./Navigation";
 import GlobalStyles from "../../../styles/GlobalStyles";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import WelcomeScreen from "../ui/WelcomeLoadScreen";
+import { startPageTransition } from "../frontUtils/startPageTransition";
+import colors from "../../../styles/colors";
 
 interface StyledMainProps {
   $backgroundColor?: string;
@@ -37,6 +39,7 @@ function Main({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const queryClient = new QueryClient();
+  const previousPath = useRef<string | null>(null);
 
   // Define different nav items per route
   const navItems =
@@ -47,14 +50,22 @@ function Main({ children }: { children: React.ReactNode }) {
         ]
       : [{ link: "/", name: "Home" }];
 
-  let color = "#282727"; // default dark
+  let color = colors.dark; // default dark
   if (pathname === "/projects" || pathname === "/contact") {
-    color = "#e9e2e2"; // light for projects or contact
+    color = colors.light; // light for projects or contact
   }
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (previousPath.current !== null && previousPath.current !== pathname) {
+      startPageTransition(color);
+    }
+
+    previousPath.current = pathname;
+  }, [pathname, color]);
 
   if (!mounted) return null;
 

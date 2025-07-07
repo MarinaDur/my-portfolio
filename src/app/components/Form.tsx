@@ -34,7 +34,7 @@ const StyledForm = styled.form`
     gap: 4rem;
     justify-content: flex-end;
     margin-top: 0;
-    width: 45%;
+    width: 40%;
     padding-bottom: 0rem;
   }
 `;

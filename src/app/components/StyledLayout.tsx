@@ -16,6 +16,7 @@ const StyledStyledLayout = styled.div`
     justify-items: center;
     width: 100%;
     height: max-content;
+    gap: 5rem;
   }
 `;
 

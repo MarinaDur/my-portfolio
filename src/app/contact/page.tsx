@@ -23,7 +23,7 @@ function ContactPage() {
   return (
     <>
       <PageBg bgColor="var(--dark)" />
-      <PageContainer bg="var(--dark)" height="100vh">
+      <PageContainer bg="var(--dark)" height="100vh" justifyContent="center">
         <TitleContainer>
           <PageTitle as="h2" $page="contact" $color="var(--light)">
             Let&apos;s Talk

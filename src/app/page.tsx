@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import HomePageHeader from "./components/HomePageHeader";
+// import HomePageHeader from "./components/HomePageHeader";
 import NavigationHomePage from "./components/NavigationHomePage";
 import PageBg from "./ui/PageBg";
 import PageContainer from "./ui/PageContainer";
@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <>
       <PageBg bgColor="var(--light)" />
-      <PageContainer gap="4rem">
-        <HomePageHeader />
+      <PageContainer gap="4rem" justifyContent="center">
+        {/* <HomePageHeader /> */}
         <NavigationHomePage />
       </PageContainer>
     </>

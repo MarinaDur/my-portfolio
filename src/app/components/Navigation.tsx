@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { startPageTransition } from "../frontUtils/startPageTransition";
 import { useRouter } from "next/navigation";
 import CopyRights from "../ui/CopyRights";
+import colors from "../../../styles/colors";
 
 interface NavItem {
   link: string;
@@ -95,7 +96,7 @@ function Navigation({ navItems, color }: NavigationProps) {
   ) => {
     e.preventDefault();
 
-    startPageTransition("#282727");
+    startPageTransition(colors.dark); // Use dark color for transition
     router.push(href);
   };
   return (

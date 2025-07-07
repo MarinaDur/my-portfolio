@@ -48,12 +48,12 @@ const shimmer = keyframes`
 `;
 
 const AnimatedTitle = styled.h1<{ $exit?: boolean }>`
-  font-size: 1rem;
-  font-family: "Poiret One", sans-serif;
-  letter-spacing: 0.1em;
+  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
   opacity: 1;
   /* transform: translateY(0); */
   transition: opacity 1s ease;
+  font-weight: 300;
 
   background: linear-gradient(
     120deg,
@@ -78,8 +78,13 @@ const AnimatedTitle = styled.h1<{ $exit?: boolean }>`
       -webkit-background-clip: unset;
     `}
 
-  @media (min-width: 768px) {
-    font-size: 2rem;
+  & span {
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 3rem;
   }
 `;
 
@@ -106,7 +111,7 @@ export default function WelcomeScreen() {
   return (
     <Overlay $animate={startOverlaySlide}>
       <AnimatedTitle $exit={startTextExit}>
-        Welcome to my portfolio
+        <span>Marina Durmishov</span> Portfolio
       </AnimatedTitle>
     </Overlay>
   );
