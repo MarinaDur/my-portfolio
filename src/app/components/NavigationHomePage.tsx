@@ -9,7 +9,7 @@ const StyledNavigationHomePage = styled.nav`
   justify-content: center;
   width: 90%;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 767px) {
     justify-content: center;
     width: fit-content;
     align-items: flex-start;

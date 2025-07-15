@@ -33,13 +33,21 @@ const StyledNavigation = styled.nav<StyledNavigationProps>`
 
   @media (min-width: 1024px) {
     position: absolute;
-    top: 70%;
+    top: 75%;
     left: 5vw;
     transform: translateY(-50%) rotate(-90deg);
     transform-origin: left center;
     flex-direction: row;
     width: 30%;
     justify-content: flex-start;
+  }
+
+  @media (min-width: 1769px) {
+    top: 70%;
+  }
+
+  @media (min-width: 2200px) {
+    gap: 22rem;
   }
 `;
 
@@ -58,12 +66,41 @@ const StyledNavcContainer = styled.div<StyledNavigationProps>`
     background: ${(props) => props.$color || "var(--dark)"};
   }
 
-  @media (min-width: 1024px) {
-    gap: 2rem;
+  @media (min-width: 767px) {
     &::after {
       width: 80px;
       bottom: 6px;
       left: 70px;
+    }
+  }
+  @media (min-width: 1617px) {
+    &::after {
+      width: 80px;
+      bottom: 8px;
+      left: 70px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    &::after {
+      width: 80px;
+      bottom: 10px;
+      left: 95px;
+    }
+  }
+
+  @media (min-width: 2200px) {
+    &::after {
+      width: 120px;
+      bottom: 12px;
+      left: 120px;
+    }
+  }
+  @media (min-width: 2800px) {
+    &::after {
+      width: 120px;
+      bottom: 12px;
+      left: 150px;
     }
   }
 `;
@@ -79,8 +116,15 @@ const StyledNavigationItem = styled(Link)`
     letter-spacing: 2px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 767px) and (max-width: 1919px) {
     font-size: clamp(1.1rem, 0.8vw, 1.8rem);
+  }
+
+  @media (min-width: 1920px) {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+  }
+  @media (min-width: 2800px) {
+    font-size: clamp(2rem, 3vw, 3rem);
   }
 `;
 

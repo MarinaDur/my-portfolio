@@ -31,6 +31,14 @@ const StyledNavigationItem = styled.a`
     font-size: clamp(10rem, 13vw, 18rem);
     line-height: 1;
   }
+
+  @media (min-width: 2800px) {
+    font-size: clamp(20rem, 25vw, 30rem);
+  }
+
+  @media (min-width: 3300px) {
+    font-size: clamp(23rem, 35vw, 40rem);
+  }
 `;
 
 export const NavLink: React.FC<TransitionLinkProps> = ({ children, href }) => {

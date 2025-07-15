@@ -16,7 +16,8 @@ interface StyledImageContainerProps {
 const StyledAboutPage = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
+  justify-content: space-between;
   width: 90%;
   padding: 8rem 0 0 0;
   @media (min-width: 1024px) {
@@ -28,7 +29,7 @@ const StyledAboutPage = styled.div`
 
 const StyledTextCon = styled.div`
   @media (min-width: 1024px) {
-    width: 48%;
+    width: 55%;
     padding-bottom: 5rem;
     position: absolute;
     top: 0;
@@ -102,6 +103,13 @@ const StyledListWrapper = styled.div`
       display: none;
     }
   }
+
+  @media (min-width: 3000px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0;
+  }
 `;
 
 function AboutPage() {
@@ -118,50 +126,46 @@ function AboutPage() {
         <StyledTextCon>
           <FadeScrollWrapper>
             <StyledListWrapper>
-              <PageTitle as="h2" $page="about">
+              <PageTitle as="h1" $page="about">
                 ABOUT
               </PageTitle>
 
               <StyledContainer>
                 <StyledParagraphContainer>
-                  <PageTitle as="h3" $fontSize="clamp(2rem, 2vw, 3rem)">
-                    I&apos;m Marina. I build with purpose, polish with passion,
-                    and always keep the cat in the loop.
+                  <PageTitle as="h3">
+                    Hi, I&apos;m Marina — a self-taught developer who enjoys
+                    building clean, user-friendly interfaces.
                   </PageTitle>
-                  <Paragraph $fontSize="clamp(1.5rem, 1.3vw, 2.5rem)">
-                    With a background in QA, a passion for thoughtful design,
-                    and a love for building things that are both functional and
-                    beautiful, I bring detail and intention into every line of
-                    code.
+                  <Paragraph>
+                    I started out in QA, where I focused on catching bugs,
+                    understanding how systems work, and working closely with
+                    developers to improve the product. That experience taught me
+                    how to pay attention to the small details, think through
+                    problems logically, and work well as part of a team.
                   </Paragraph>
-                  <Paragraph $fontSize="clamp(1.5rem, 1.3vw, 2.5rem)">
-                    I started out in manual testing, where I sharpened my eye
-                    for detail, learned how users think, and collaborated
-                    closely with developers to ship better products. But
-                    somewhere along the way, I realized I didn&apos;t just want
-                    to test things — I wanted to build them.
+                  <Paragraph>
+                    Over time, I realized I wanted to be the one building the
+                    things I was testing. So I started learning frontend
+                    development on my own, creating small projects and gradually
+                    taking on more complex ones. Now I build full-stack projects
+                    using tools like React, TypeScript, Node.js, and MongoDB.
+                    I&apos;m also comfortable working with Git and GitHub, and
+                    I&apos;m continuing to grow my skills as I take on more
+                    backend work.
                   </Paragraph>
-                  <Paragraph $fontSize="clamp(1.5rem, 1.3vw, 2.5rem)">
-                    That led me to frontend and full-stack development. Now, I
-                    craft responsive web experiences using technologies like
-                    React, TypeScript, Node.js, and MongoDB. I enjoy making
-                    clean, user-friendly interfaces and adding the little
-                    touches that make a site feel alive.
+                  <Paragraph>
+                    I bring a strong work ethic, an eye for detail, and a real
+                    focus on user experience. I&apos;m always learning — whether
+                    that&apos;s diving deeper into backend development or
+                    finding new ways to make interfaces more intuitive and
+                    enjoyable to use.
                   </Paragraph>
-                  <Paragraph $fontSize="clamp(1.5rem, 1.3vw, 2.5rem)">
-                    I believe design and logic go hand-in-hand, and I&apos;m
-                    always exploring ways to bring creative energy into code. My
-                    portfolio is a space where I explore, experiment, and push
-                    myself creatively — just how I like it.
+                  <Paragraph>
+                    When I&apos;m not coding, I&apos;m probably reading,
+                    dancing, or spending time with my cat (who always has strong
+                    opinions about my color choices).
                   </Paragraph>
-                  <Paragraph $fontSize="clamp(1.5rem, 1.3vw, 2.5rem)">
-                    When I&apos;m not coding, you&apos;ll probably find me
-                    reading, dancing, or hanging out with my cat (who has very
-                    strong opinions about my color palettes).
-                  </Paragraph>
-                  <Paragraph $fontSize="clamp(1.5rem, 1.3vw, 2.5rem)">
-                    Thanks for stopping by.
-                  </Paragraph>
+                  <Paragraph>Thanks for stopping by.</Paragraph>
                 </StyledParagraphContainer>
                 {/* </StyledListWrapper> */}
               </StyledContainer>

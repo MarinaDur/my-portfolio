@@ -19,7 +19,16 @@ const StyledListIName = styled.p`
   text-align: right;
 
   @media (min-width: 1024px) {
-    font-size: clamp(6rem, 6vw, 10rem);
+    font-size: clamp(6rem, 5vw, 8rem);
+  }
+  @media (min-width: 2050px) {
+    font-size: clamp(10rem, 7vw, 13rem);
+  }
+  @media (min-width: 2500px) {
+    font-size: clamp(13rem, 8vw, 15rem);
+  }
+  @media (min-width: 2700px) {
+    font-size: clamp(15rem, 9vw, 17rem);
   }
 `;
 
@@ -28,6 +37,12 @@ const StyledIconsCon = styled.div`
   gap: 1rem;
   @media (min-width: 1024px) {
     padding-left: 0.5rem;
+  }
+
+  @media (min-width: 2500px) {
+    padding-left: 0.8rem;
+
+    gap: 2rem;
   }
 `;
 

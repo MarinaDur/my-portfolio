@@ -21,11 +21,21 @@ const StyledHeader = styled.div`
     margin-top: auto;
     padding: 0 0 5rem 8vw;
   }
+
+  @media (min-width: 2050px) {
+    gap: 1.5rem;
+  }
 `;
 
 const StylesParagraph = styled.div`
   @media (min-width: 1024px) {
-    width: 45ch;
+    width: 38ch;
+  }
+  @media (min-width: 1650px) {
+    width: 50ch;
+  }
+  @media (min-width: 2000px) {
+    width: 70ch;
   }
 `;
 
@@ -75,13 +85,16 @@ const StyledListWrapper = styled.div`
     height: 100vh;
     overflow-y: scroll;
     will-change: transform;
-    padding: 7rem 5vw 5rem 0;
+    padding: 10rem 5vw 10rem 0;
     scrollbar-width: none;
     -ms-overflow-style: none;
 
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+  @media (min-width: 2500px) {
+    padding: 10rem 5vw 10rem 0;
   }
 `;
 
@@ -105,10 +118,10 @@ function ProjectsPage() {
           PROJECTS
         </PageTitle>
         <StylesParagraph>
-          <Paragraph $fontSize="clamp(1.5rem, 1.5vw, 2.3rem)">
+          <Paragraph $page="projects">
             Tech stack used across projects:
           </Paragraph>
-          <Paragraph $fontSize="clamp(1.5rem, 1.5vw, 2.3rem)">
+          <Paragraph $page="projects">
             React, TypeScript, Styled Components, Node.js, Express, MongoDB, and
             Mongoose
           </Paragraph>

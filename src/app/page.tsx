@@ -11,6 +11,7 @@ export default function Home() {
   useEffect(() => {
     animateOut();
   }, []);
+  console.log(window.innerWidth);
   return (
     <>
       <PageBg bgColor="var(--light)" />
