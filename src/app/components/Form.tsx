@@ -65,7 +65,7 @@ function Form() {
     message?: string;
   }>({});
 
-  const { mutate, isPending, isError, _error, isSuccess } = useMutation<
+  const { mutate, isPending, isError, isSuccess } = useMutation<
     ContactResponse,
     Error,
     ContactFormInput
