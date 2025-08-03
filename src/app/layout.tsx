@@ -4,17 +4,15 @@ import StyledComponentsRegistry from "./StyledComponentsRegistry";
 import Main from "./components/Main";
 
 const roboto = Roboto({
-  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
 const poiretOne = Poiret_One({
-  weight: "400",
   subsets: ["latin"],
+  weight: "400",
 });
 
 const montserrat = Montserrat({
-  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -23,7 +21,7 @@ export const metadata: Metadata = {
   description:
     "Portfolio website of Marina Durmishov, showcasing frontend and fullstack web development projects, UI design, and coding expertise.",
   icons: {
-    icon: "/portfolio.png", //
+    icon: "/portfolio.png",
   },
 };
 

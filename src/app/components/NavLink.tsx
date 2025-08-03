@@ -13,8 +13,6 @@ interface TransitionLinkProps {
 const StyledNavigationItem = styled.a`
   color: var(--cl-primary-text-light);
   font-family: "Poiret One", sans-serif;
-  /* font-family: qara, sans-serif; */
-  /* font-family: "Cormorant Infant", serif; */
   font-size: 7rem;
   /* transition: all 0.8s ease-in-out; */
   cursor: pointer;
