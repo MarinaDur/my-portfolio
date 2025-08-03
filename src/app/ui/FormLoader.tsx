@@ -1,5 +1,6 @@
 import { keyframes, styled } from "styled-components";
 import textStyle from "./TextStyle";
+import formFontStyles from "./FormFontStyles";
 
 const blink = keyframes`
   0%  { visibility: hidden;}
@@ -41,12 +42,7 @@ const StyledLoader = styled.span`
     animation: 1s ${blink} steps(2) infinite;
   }
 
-  @media (min-width: 390px) {
-    font-size: 2rem;
-  }
-  @media (min-width: 430px) {
-    font-size: 2.3rem;
-  }
+  ${formFontStyles}
 `;
 
 function FormLoader() {

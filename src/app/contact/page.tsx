@@ -20,17 +20,23 @@ const StyledParagraphCon = styled.div`
   @media (min-width: 1024px) {
     width: 58ch;
   }
+  @media (min-width: 2000px) {
+    width: 80ch;
+  }
 `;
 
 const StyledCon = styled.div`
   display: flex;
   width: 90%;
   flex-direction: column;
+  max-width: 1500px;
+  gap: 3rem;
 
   @media (min-width: 1024px) {
     height: 100vh;
     flex-direction: row;
     padding: 0 0 0 8vw;
+    max-height: 1200px;
   }
 `;
 

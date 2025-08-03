@@ -66,10 +66,16 @@ const StyledNavcContainer = styled.div<StyledNavigationProps>`
     background: ${(props) => props.$color || "var(--dark)"};
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 767px) and (max-width: 1023px) {
     &::after {
-      width: 80px;
+      width: 40%;
       bottom: 6px;
+      left: 35%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    &::after {
       left: 70px;
     }
   }

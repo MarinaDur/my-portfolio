@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import textStyle from "./TextStyle";
+import formFontStyles from "./FormFontStyles";
 
 interface ButtonProps {
   type?: "button" | "submit" | "reset";
@@ -13,6 +14,8 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   margin-top: -1rem;
+
+  ${formFontStyles}
 `;
 
 function Button({ children }: ButtonProps) {

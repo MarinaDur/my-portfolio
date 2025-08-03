@@ -92,19 +92,27 @@ export default function WelcomeScreen() {
   const [show, setShow] = useState(true);
   const [startTextExit, setStartTextExit] = useState(false);
   const [startOverlaySlide, setStartOverlaySlide] = useState(false);
+  const content = document.getElementById("page-content");
 
   useEffect(() => {
     const runAnimation = async () => {
       await sleep(1500); // show the welcome text for a bit
+
+      content?.classList.add("page-content-hidden");
+      content?.classList.remove("page-content-visible"); // hide and blur the content
+
       setStartTextExit(true); // trigger fade/slide on text
       await sleep(300); // short pause before overlay moves
       setStartOverlaySlide(true); // slide overlay up
       await sleep(1000); // wait for overlay to finish
       setShow(false); // completely unmount the welcome screen
+      await sleep(400);
+      content?.classList.remove("page-content-hidden"); // 👈 Remove hidden
+      content?.classList.add("page-content-visible");
     };
 
     runAnimation();
-  }, []);
+  }, [content]);
 
   if (!show) return null;
 

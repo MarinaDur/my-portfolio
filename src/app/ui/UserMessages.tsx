@@ -33,6 +33,18 @@ const MotionMessage = styled(motion.p)<{ $messageType: string }>`
         ? "1.8rem"
         : "1.3rem"};
   }
+
+  @media (min-width: 2000px) {
+    bottom: ${(props) =>
+      props.$messageType === "errorSubmit" || props.$messageType === "success"
+        ? "-40px"
+        : "-30px"};
+
+    font-size: ${(props) =>
+      props.$messageType === "errorSubmit" || props.$messageType === "success"
+        ? "2.5rem"
+        : "2.3rem"};
+  }
 `;
 
 const messageVariants = {

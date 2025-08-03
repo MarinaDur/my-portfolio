@@ -37,6 +37,9 @@ const StyledForm = styled.form`
     width: 40%;
     padding-bottom: 8rem;
   }
+  @media (min-width: 2000px) {
+    gap: 10rem;
+  }
 `;
 
 const StyledInputCon = styled.label`
