@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Montserrat, Poiret_One, Roboto } from "next/font/google";
+import Head from "next/head";
+import { Poiret_One, Roboto } from "next/font/google";
 import StyledComponentsRegistry from "./StyledComponentsRegistry";
 import Main from "./components/Main";
 
@@ -14,26 +14,10 @@ const poiretOne = Poiret_One({
   subsets: ["latin"],
 });
 
-const montserrat = Montserrat({
-  weight: ["300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-});
-
-const qara = localFont({
-  src: "./fonts/PPChronosSerif-Stroked.otf",
-  display: "swap",
-  weight: "400",
-  style: "normal",
-  variable: "--font-grytha-angel", // optional CSS variable
-  fallback: ["sans-serif"], // optional fallback
-  // 👇 force a proper name so it's easier to use and debug
-  declarations: [
-    {
-      prop: "font-family",
-      value: "'Benjola'",
-    },
-  ],
-});
+// const montserrat = Montserrat({
+//   weight: ["300", "400", "500", "600", "700"],
+//   subsets: ["latin"],
+// });
 
 export const metadata: Metadata = {
   title: "Marina's Portfolio",
@@ -51,10 +35,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        lang="en"
-        className={`${roboto.className} ${montserrat.className} ${poiretOne.className} ${qara.className} `}
-      >
+      <Head>
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=boska@400&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <body lang="en" className={`${poiretOne.className} ${roboto.className}`}>
         <StyledComponentsRegistry>
           <Main>{children}</Main>
         </StyledComponentsRegistry>
