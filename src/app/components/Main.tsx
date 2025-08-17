@@ -42,8 +42,11 @@ function Main({ children }: { children: React.ReactNode }) {
   const navItems =
     pathname === "/"
       ? [
-          { link: "https://linkedin.com", name: "LinkedIn" },
-          { link: "https://github.com", name: "GitHub" },
+          {
+            link: "https://www.linkedin.com/in/marina-durmishov-1900051b5/",
+            name: "LinkedIn",
+          },
+          { link: "https://github.com/MarinaDur/", name: "GitHub" },
         ]
       : [{ link: "/", name: "Home" }];
 
