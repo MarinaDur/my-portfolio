@@ -132,7 +132,7 @@ function AboutPage() {
 
               <StyledContainer>
                 <StyledParagraphContainer>
-                  <PageTitle as="h3">
+                  <PageTitle as="h3" $fontSize="clamp(2rem, 2vw, 3rem)">
                     Hi, I&apos;m Marina — a self-taught developer who enjoys
                     building clean, user-friendly interfaces.
                   </PageTitle>
