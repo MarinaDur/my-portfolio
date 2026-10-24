@@ -1,18 +1,18 @@
 "use server";
 
 import { Resend } from "resend";
+import { NEEDS } from "./needs";
 
-export type ContactField = "name" | "email" | "message";
+export type ContactField = "name" | "email" | "website" | "message";
 
 export type ContactState = {
   status: "idle" | "success" | "error";
   message?: string;
   errors?: Partial<Record<ContactField, string>>;
   /** Echoed back on failure so the visitor doesn't lose what they typed. */
-  values?: { name: string; email: string; message: string; needs: string[] };
+  values?: { name: string; email: string; website: string; message: string; needs: string[] };
 };
 
-const NEEDS = ["WordPress", "WooCommerce", "React", "QA"];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function sendContactMessage(_prev: ContactState, formData: FormData): Promise<ContactState> {
@@ -22,6 +22,7 @@ export async function sendContactMessage(_prev: ContactState, formData: FormData
   const values = {
     name: String(formData.get("name") ?? "").trim(),
     email: String(formData.get("email") ?? "").trim(),
+    website: String(formData.get("website") ?? "").trim(),
     message: String(formData.get("message") ?? "").trim(),
     needs: formData.getAll("need").map(String).filter((need) => NEEDS.includes(need)),
   };
@@ -30,6 +31,7 @@ export async function sendContactMessage(_prev: ContactState, formData: FormData
   if (!values.name) errors.name = "Please tell me your name";
   else if (values.name.length > 100) errors.name = "That name is a bit long";
   if (!EMAIL_RE.test(values.email)) errors.email = "Please enter a valid email";
+  if (values.website.length > 300) errors.website = "That link is a bit long";
   if (!values.message) errors.message = "Tell me a little about the project";
   else if (values.message.length > 5000) errors.message = "Please keep it under 5000 characters";
   if (Object.keys(errors).length > 0) return { status: "error", errors, values };
@@ -49,6 +51,7 @@ export async function sendContactMessage(_prev: ContactState, formData: FormData
     text: [
       `Name: ${values.name}`,
       `Email: ${values.email}`,
+      `Website: ${values.website || "—"}`,
       `Needs help with: ${values.needs.join(", ") || "—"}`,
       "",
       values.message,

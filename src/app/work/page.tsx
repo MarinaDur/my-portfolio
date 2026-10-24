@@ -21,7 +21,7 @@ export default function WorkPage() {
         <Bug id={4} size={26} className="relative ml-1 align-middle" />
       </PageHeader>
 
-      <div className="stagger grid grid-cols-1 gap-3 lg:grid-cols-3 lg:gap-[clamp(12px,0.9375vw,18px)]">
+      <div className="stagger grid grid-cols-1 gap-3 lg:grid-cols-12 lg:gap-[clamp(12px,0.9375vw,18px)]">
         {projects.map((project) => (
           <ProjectCard key={project.title} project={project} />
         ))}

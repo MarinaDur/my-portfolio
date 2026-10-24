@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { site } from "@/data/site";
 import { Page, PageHeader } from "@/components/PageHeader";
+import { Recommendation } from "@/components/Recommendation";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Have a project? Tell me a little about it — I’ll reply with questions and a clear next step.",
+  description: "Have a project? Tell me a little about it — I reply within 24 hours with questions and a clear next step.",
 };
 
 function EmailTile({ className, children }: { className: string; children: React.ReactNode }) {
@@ -28,7 +29,7 @@ export default function ContactPage() {
           <h2 className="display m-0 text-[34px] leading-[0.98] lg:text-[clamp(40px,3.562vw,72px)]">
             Have a project? <span className="text-pink-b">Let’s make it work.</span>
           </h2>
-          <p className="m-0 text-mist">Tell me a little about it — I’ll reply with questions and a clear next step.</p>
+          <p className="m-0 text-mist">Tell me a little about it — I’ll reply within 24 hours with questions and a clear next step.</p>
           <ContactForm />
         </section>
 
@@ -65,14 +66,9 @@ export default function ContactPage() {
           </span>
           <b className="display text-[20px] lg:text-[clamp(20px,1.688vw,32px)]">GitHub</b>
         </a>
-      </div>
 
-      <footer className="flex flex-wrap justify-between gap-2.5 px-1 pt-5 pb-1 text-[13px] text-ink-2">
-        <span>
-          © {site.year} {site.name}
-        </span>
-        <span>Built &amp; tested by me</span>
-      </footer>
+        <Recommendation short className="col-span-2 bg-cream lg:col-span-5 lg:col-start-8" />
+      </div>
     </Page>
   );
 }

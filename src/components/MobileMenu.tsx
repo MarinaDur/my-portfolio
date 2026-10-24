@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { projects } from "@/data/projects";
 import { site } from "@/data/site";
 import { Logo } from "./Logo";
 
 const items = [
-  { href: "/work", num: "01", label: "Work", sub: "7 projects — sites, apps & tests", className: "col-span-2 min-h-[150px] bg-peach" },
+  { href: "/work", num: "01", label: "Work", sub: `${projects.length} projects — sites, apps & tests`, className: "col-span-2 min-h-[150px] bg-peach" },
   { href: "/services", num: "02", label: "Services", className: "bg-sage-2" },
   { href: "/about", num: "03", label: "About", className: "bg-pink" },
   { href: "/contact", num: "04", label: "Let’s talk", sub: "Tell me about your project", className: "col-span-2 bg-ink text-light [&_b]:text-pink-b" },

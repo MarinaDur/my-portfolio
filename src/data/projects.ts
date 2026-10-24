@@ -9,6 +9,8 @@ type BaseProject = {
   live?: string;
   code: string;
   color: TileColor;
+  /** Shown as a large card at the top of the Work page. */
+  featured?: boolean;
 };
 
 /** A project shown with a screenshot, or (for test suites) a mock test report. */
@@ -19,15 +21,13 @@ const gh = site.github;
 
 export const projects: Project[] = [
   {
-    kind: "image",
-    title: "Dine Restaurant",
-    description: "A multi‑page restaurant website with a booking form.",
-    stack: "React · React Router · Styled Components",
-    image: "/projects/dine-restaurant.jpg",
-    alt: "Dine restaurant website",
-    live: "https://dine-restaurant-reactjs.netlify.app/",
-    code: gh + "dine-restaurant",
-    color: "peach",
+    kind: "report",
+    title: "Store Test Suite",
+    description: "How I test real shops: login, cart and checkout tests — prices and tax checked — plus API tests, on 3 browsers and 2 phones, running in CI.",
+    stack: "Playwright · TypeScript · Page Objects · GitHub Actions",
+    code: gh + "saucedemo-playwright-tests",
+    featured: true,
+    color: "ink",
   },
   {
     kind: "image",
@@ -38,16 +38,19 @@ export const projects: Project[] = [
     alt: "Markdown editor",
     live: "https://markdowneditorfullstack.netlify.app/",
     code: gh + "markdown-editor",
+    featured: true,
     color: "mustard",
   },
   {
-    kind: "report",
-    title: "Sunflower Automation",
-    description: "End‑to‑end test suite for a demo shop, on desktop and iPhone 13.",
-    stack: "Playwright · TypeScript · Page Objects",
-    // TODO: point to the Sunflower repo once its name is confirmed.
-    code: gh,
-    color: "ink",
+    kind: "image",
+    title: "Dine Restaurant",
+    description: "A multi‑page restaurant website with a booking form.",
+    stack: "React · React Router · Styled Components",
+    image: "/projects/dine-restaurant.jpg",
+    alt: "Dine restaurant website",
+    live: "https://dine-restaurant-reactjs.netlify.app/",
+    code: gh + "dine-restaurant",
+    color: "peach",
   },
   {
     kind: "image",
@@ -81,16 +84,5 @@ export const projects: Project[] = [
     live: "https://todo-app-main-react-js.netlify.app/",
     code: gh + "todo-app",
     color: "cream",
-  },
-  {
-    kind: "image",
-    title: "Tic Tac Toe",
-    description: "Play against the CPU, with sound and a running score.",
-    stack: "React · Styled Components · Lottie",
-    image: "/projects/tic-tac-toe.jpg",
-    alt: "Tic tac toe game",
-    live: "https://tic-tac-toe-game-with-cpu.netlify.app/",
-    code: gh + "tic-tac-toe",
-    color: "peach",
   },
 ];

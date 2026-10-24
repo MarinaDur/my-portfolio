@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Page } from "@/components/PageHeader";
 import { Bug } from "@/components/bug-hunt/Bug";
+import { WorkSlideshow } from "@/components/WorkSlideshow";
+import { projects } from "@/data/projects";
 
 const services = ["WordPress & WooCommerce", "React websites & apps", "QA & test automation"];
 
@@ -40,12 +42,16 @@ export default function HomePage() {
 
         <Link
           href="/about"
-          className="tile tilt row-span-2 min-h-[230px] justify-between bg-tan p-3 lg:col-span-3 lg:row-span-3 lg:min-h-0 lg:p-[clamp(14px,1.125vw,22px)]"
+          className="group tile tilt row-span-2 min-h-57.5 justify-between bg-tan p-3 lg:col-span-3 lg:row-span-3 lg:min-h-0 lg:p-[clamp(14px,1.125vw,22px)]"
         >
-          {/* TODO: replace with a photo of Marina */}
-          <span className="absolute inset-0 flex items-center justify-center text-xs font-semibold tracking-[0.08em] text-bark uppercase">
-            Your photo
-          </span>
+          <Image
+            src="/marina.jpg"
+            alt="Marina Durmishov, smiling, sitting by the plants at home"
+            fill
+            preload
+            sizes="(min-width: 900px) 25vw, 50vw"
+            className="object-cover object-[50%_22%] transition-transform duration-1000 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
+          />
           <span className="relative mt-auto flex items-center justify-between gap-3 self-stretch rounded-full bg-cream py-[5px] pr-[5px] pl-4">
             <b className="display text-[17px] lg:text-[clamp(17px,1.312vw,26px)]">About me</b>
             <span aria-hidden="true" className="arrow size-9 bg-ink text-cream">
@@ -78,18 +84,12 @@ export default function HomePage() {
           className="group tile tilt col-span-2 gap-2.5 bg-peach p-2.5 lg:col-span-4 lg:col-start-1 lg:row-span-2 lg:row-start-3 lg:p-[clamp(10px,0.8438vw,16px)]"
         >
           <div className="relative aspect-video overflow-hidden rounded-2xl bg-ink lg:aspect-auto lg:min-h-0 lg:flex-1">
-            <Image
-              src="/projects/dine-restaurant.jpg"
-              alt="Dine restaurant website"
-              fill
-              sizes="(min-width: 900px) 33vw, 100vw"
-              className="object-cover object-left-top transition-transform duration-1000 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
-            />
+            <WorkSlideshow />
           </div>
           <div className="flex items-center justify-between gap-3 px-2 pt-0.5 pb-1.5">
             <div>
               <b className="display block text-[22px] leading-[1.1] lg:text-[clamp(22px,1.688vw,34px)]">Selected work</b>
-              <small className="font-medium text-ink-2">7 projects — sites, apps &amp; tests</small>
+              <small className="font-medium text-ink-2">{projects.length} projects — sites, apps &amp; tests</small>
             </div>
             <span aria-hidden="true" className="arrow">
               →
@@ -97,24 +97,28 @@ export default function HomePage() {
           </div>
         </Link>
 
-        <nav
-          aria-label="Services"
-          className="tile tilt col-span-2 bg-cream px-[18px] pt-4 pb-2 lg:col-span-3 lg:row-span-2 lg:justify-center lg:p-[clamp(20px,1.688vw,34px)]"
-        >
-          <p className="label">What I can do for you</p>
-          {services.map((service, i) => (
-            <Link
-              key={service}
-              href="/services"
-              className={`display flex min-h-[52px] items-center justify-between text-[19px] lg:min-h-[clamp(56px,4.312vw,88px)] lg:text-[clamp(18px,1.359vw,28px)] ${
-                i > 0 ? "border-t-[1.5px] border-line" : ""
-              }`}
-            >
-              {service} <span className="text-clay">→</span>
-            </Link>
-          ))}
+        {/* Whole tile is clickable via the link's ::after overlay; the bug button sits above it (a button can't go inside a link). */}
+        <div className="group tile col-span-2 bg-cream px-[18px] pt-4 pb-2 hover:-translate-y-[3px] has-[a:focus-visible]:outline-3 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-clay lg:col-span-3 lg:row-span-2 lg:justify-center lg:p-[clamp(20px,1.688vw,34px)]">
+          <Link href="/services" className="label after:absolute after:inset-0 after:content-[''] focus-visible:outline-none">
+            What I can do for you
+          </Link>
+          <ul>
+            {services.map((service, i) => (
+              <li
+                key={service}
+                className={`display flex min-h-13 items-center justify-between text-[19px] lg:min-h-[clamp(56px,4.312vw,88px)] lg:text-[clamp(18px,1.359vw,28px)] ${
+                  i > 0 ? "border-t-[1.5px] border-line" : ""
+                }`}
+              >
+                {service}
+                <span aria-hidden="true" className="text-clay transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </li>
+            ))}
+          </ul>
           <Bug id={2} className="absolute top-2 right-2" />
-        </nav>
+        </div>
 
         <section className="tile tilt col-span-2 gap-4 bg-ink text-sand lg:col-span-2 lg:row-span-2 lg:p-[clamp(16px,1.219vw,26px)]">
           {/* Title bar: window dots + the bug, so the bug never covers the text */}

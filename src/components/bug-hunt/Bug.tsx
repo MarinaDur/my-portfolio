@@ -30,12 +30,15 @@ export function Bug({ id, className = "absolute", size = 24, spots }: BugProps) 
       {caught ? (
         <span
           aria-hidden="true"
-          className="flex size-7 items-center justify-center rounded-full bg-leaf text-sm font-extrabold text-white"
+          className="flex size-7 animate-pop items-center justify-center rounded-full bg-leaf text-sm font-extrabold text-white"
         >
           ✓
         </span>
       ) : (
-        <Ladybug size={size} spots={spots} />
+        // Staggered so the bugs on a page don't all wiggle at the same moment
+        <span className="block animate-wiggle" style={{ animationDelay: `${id * 0.6}s` }}>
+          <Ladybug size={size} spots={spots} />
+        </span>
       )}
     </button>
   );

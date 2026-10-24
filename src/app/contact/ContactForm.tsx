@@ -2,8 +2,7 @@
 
 import { useActionState } from "react";
 import { sendContactMessage, type ContactField, type ContactState } from "./actions";
-
-const NEEDS = ["WordPress", "WooCommerce", "React", "QA"];
+import { NEEDS } from "./needs";
 
 const inputClass =
   "w-full rounded-[14px] border-[1.5px] border-transparent bg-coal px-3.5 py-[13px] text-base leading-[1.45] text-light outline-none focus:border-pink-b aria-invalid:border-pink-b";
@@ -36,7 +35,7 @@ export function ContactForm() {
                 type="checkbox"
                 name="need"
                 value={need}
-                defaultChecked={values ? values.needs.includes(need) : need === "WordPress"}
+                defaultChecked={values?.needs.includes(need)}
                 className="peer absolute inset-0 m-0 cursor-pointer opacity-0"
               />
               <span className="inline-flex min-h-11 items-center rounded-full border-[1.5px] border-[#8a7466] px-3.5 text-sm font-semibold peer-checked:border-pink-b peer-checked:bg-pink-b peer-checked:text-ink peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-mustard">
@@ -49,7 +48,7 @@ export function ContactForm() {
 
       <div className="grid gap-3 lg:grid-cols-2">
         <label className="block">
-          <span className="mb-[5px] block text-[13px] font-semibold text-mist">Your name</span>
+          <span className="mb-1.25 block text-[13px] font-semibold text-mist">Your name</span>
           <input
             type="text"
             name="name"
@@ -63,7 +62,7 @@ export function ContactForm() {
           <FieldError state={state} field="name" />
         </label>
         <label className="block">
-          <span className="mb-[5px] block text-[13px] font-semibold text-mist">Email</span>
+          <span className="mb-1.25 block text-[13px] font-semibold text-mist">Email</span>
           <input
             type="email"
             name="email"
@@ -78,7 +77,23 @@ export function ContactForm() {
       </div>
 
       <label className="block">
-        <span className="mb-[5px] block text-[13px] font-semibold text-mist">About the project</span>
+        <span className="mb-1.25 block text-[13px] font-semibold text-mist">Your website (if you have one)</span>
+        <input
+          type="text"
+          inputMode="url"
+          name="website"
+          autoComplete="url"
+          placeholder="yoursite.com"
+          maxLength={300}
+          defaultValue={values?.website}
+          className={`${inputClass} placeholder:text-[#8a7466]`}
+          {...errorProps("website")}
+        />
+        <FieldError state={state} field="website" />
+      </label>
+
+      <label className="block">
+        <span className="mb-1.25 block text-[13px] font-semibold text-mist">About the project</span>
         <textarea
           name="message"
           rows={3}

@@ -39,7 +39,7 @@ export function Header() {
 
           <BugCounter />
 
-          <Link href="/contact" className="pill bg-ink text-cream">
+          <Link href="/contact" className="pill bg-clay text-light">
             Let’s talk
           </Link>
 

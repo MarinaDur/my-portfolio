@@ -10,11 +10,13 @@ const colors: Record<TileColor, string> = {
   ink: "bg-ink text-sand",
 };
 
+// Mirrors the specs in github.com/MarinaDur/saucedemo-playwright-tests
 const reportRuns = [
-  ["new customer", "chromium"],
-  ["new customer", "iPhone 13"],
-  ["cart total", "chromium"],
-  ["cart total", "iPhone 13"],
+  ["login › locked-out user", "firefox"],
+  ["cart › badge updates", "webkit"],
+  ["checkout › total + tax", "iPhone 13"],
+  ["checkout › full purchase", "Pixel 5"],
+  ["api › create booking", "api"],
 ];
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -25,24 +27,29 @@ export function ProjectCard({ project }: { project: Project }) {
 
   return (
     <article
-      className={`group animate-fade-up rounded-3xl p-2.5 lg:rounded-[clamp(24px,1.875vw,36px)] lg:p-[clamp(10px,0.8438vw,16px)] ${colors[project.color]}`}
+      className={`group animate-fade-up rounded-3xl p-2.5 lg:rounded-[clamp(24px,1.875vw,36px)] lg:p-[clamp(10px,0.8438vw,16px)] ${
+        project.featured ? "lg:col-span-6" : "lg:col-span-3"
+      } ${colors[project.color]}`}
     >
       {project.kind === "image" ? (
-        <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-ink">
+        <div className="relative aspect-[2/1] overflow-hidden rounded-2xl bg-ink">
           <Image
             src={project.image}
             alt={project.alt}
+            quality={90}
             fill
-            sizes="(min-width: 900px) 33vw, 100vw"
-            className="object-cover object-left-top transition-transform duration-1000 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
+            sizes={project.featured ? "(min-width: 900px) 50vw, 100vw" : "(min-width: 900px) 25vw, 100vw"}
+            className="object-cover object-top transition-transform duration-1000 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
           />
         </div>
       ) : (
         <div
           aria-label="Playwright test report"
-          className="aspect-[16/10] overflow-hidden rounded-2xl bg-[#1e1410] p-3.5 font-mono text-xs leading-[1.85] lg:text-[clamp(12px,0.75vw,15px)]"
+          className={`aspect-[2/1] overflow-hidden rounded-2xl bg-[#1e1410] p-3.5 font-mono text-xs leading-[1.85] ${
+            project.featured ? "lg:p-[clamp(16px,1.6vw,32px)] lg:text-[clamp(13px,1.05vw,20px)]" : "lg:text-[clamp(12px,0.75vw,15px)]"
+          }`}
         >
-          <div className="text-[#9c8a7d]">sunflower › npx playwright test</div>
+          <div className="text-[#9c8a7d]">saucedemo › npx playwright test</div>
           {reportRuns.map(([test, device]) => (
             <div key={test + device}>
               <span className="text-mint">✓</span> {test}
@@ -53,7 +60,13 @@ export function ProjectCard({ project }: { project: Project }) {
       )}
 
       <div className="px-2 pt-3 pb-1.5">
-        <h2 className="display m-0 text-[22px] leading-[1.1] lg:text-[clamp(22px,1.594vw,32px)]">{project.title}</h2>
+        <h2
+          className={`display m-0 text-[22px] leading-[1.1] ${
+            project.featured ? "lg:text-[clamp(26px,2.25vw,44px)]" : "lg:text-[clamp(20px,1.4vw,28px)]"
+          }`}
+        >
+          {project.title}
+        </h2>
         <p className="mt-1 mb-0.5 text-[15px]">{project.description}</p>
         <small className="block text-[13px] font-semibold opacity-75">{project.stack}</small>
         <div className="mt-3 flex gap-2">

@@ -14,7 +14,10 @@ export function BugCounter() {
     >
       <Ladybug size={20} />
       <span className="sr-only">Bugs found:</span>
-      {count}/{total}
+      {/* key: re-mount on each catch so the number pops */}
+      <span key={count} className={count > 0 ? "inline-block animate-pop" : undefined}>
+        {count}/{total}
+      </span>
     </span>
   );
 }

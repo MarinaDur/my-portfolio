@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { ViewTransition } from "react";
 import { Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
 import { site } from "@/data/site";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { TiltEffect } from "@/components/TiltEffect";
 import { WinToast } from "@/components/bug-hunt/WinToast";
@@ -38,7 +40,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${bricolage.variable} ${plexMono.variable}`}>
       <body>
         <Header />
-        {children}
+        {/* Crossfades page content on navigation (browsers without View Transitions just switch) */}
+        <ViewTransition>{children}</ViewTransition>
+        <Footer />
         <WinToast />
         <TiltEffect />
       </body>
