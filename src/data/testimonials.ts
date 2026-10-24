@@ -1,6 +1,7 @@
 // Quoted word for word from LinkedIn recommendations (trimmed with "…", never reworded).
 export const recommendation = {
   name: "Avi Kurt",
+  initials: "AK",
   role: "Senior Java Backend Engineer · worked with Marina",
   url: "https://www.linkedin.com/in/marina-durmishov-1900051b5/details/recommendations/",
   quote:

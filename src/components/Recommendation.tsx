@@ -7,11 +7,6 @@ type RecommendationProps = {
 };
 
 export function Recommendation({ short = false, className = "" }: RecommendationProps) {
-  const initials = recommendation.name
-    .split(" ")
-    .map((part) => part[0])
-    .join("");
-
   return (
     <figure className={`tile m-0 justify-between gap-5 ${className}`}>
       <span aria-hidden="true" className="display -mb-6 text-[64px] leading-none text-clay lg:text-[clamp(64px,5vw,96px)]">
@@ -29,7 +24,7 @@ export function Recommendation({ short = false, className = "" }: Recommendation
           aria-hidden="true"
           className="flex size-11 shrink-0 items-center justify-center rounded-full bg-ink text-sm font-extrabold text-cream"
         >
-          {initials}
+          {recommendation.initials}
         </span>
         <span className="text-sm leading-tight">
           <b className="block">{recommendation.name}</b>

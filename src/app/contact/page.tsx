@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { site } from "@/data/site";
-import { Page, PageHeader } from "@/components/PageHeader";
+import { Arrow } from "@/components/Arrow";
+import { Bento } from "@/components/Bento";
+import { Page } from "@/components/Page";
+import { PageHeader } from "@/components/PageHeader";
 import { Recommendation } from "@/components/Recommendation";
 import { ContactForm } from "./ContactForm";
 
@@ -24,8 +27,8 @@ export default function ContactPage() {
     <Page>
       <PageHeader title="Let’s" accent="talk" />
 
-      <div className="stagger grid grid-cols-2 gap-2.5 lg:grid-cols-12 lg:gap-[clamp(12px,0.9375vw,18px)]">
-        <section className="tile col-span-2 gap-3 bg-ink p-[22px] text-light lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:p-[clamp(28px,2.438vw,48px)]">
+      <Bento>
+        <section className="tile col-span-2 gap-3 bg-ink p-5.5 text-light lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:p-[clamp(28px,2.438vw,48px)]">
           <h2 className="display m-0 text-[34px] leading-[0.98] lg:text-[clamp(40px,3.562vw,72px)]">
             Have a project? <span className="text-pink-b">Let’s make it work.</span>
           </h2>
@@ -38,9 +41,7 @@ export default function ContactPage() {
           <div className="flex items-center justify-between gap-3">
             {/* TODO: placeholder until the new email address is set in src/data/site.ts */}
             <b className="display text-[22px] wrap-break-word lg:text-[clamp(24px,2.062vw,42px)]">{site.email ?? "[YOUR EMAIL]"}</b>
-            <span aria-hidden="true" className="arrow">
-              →
-            </span>
+            <Arrow />
           </div>
         </EmailTile>
 
@@ -50,9 +51,7 @@ export default function ContactPage() {
           rel="noopener noreferrer"
           className="tile justify-between gap-3.5 bg-sage-2 lg:col-span-3 lg:col-start-8 lg:min-h-[clamp(140px,10.31vw,200px)]"
         >
-          <span aria-hidden="true" className="arrow">
-            ↗
-          </span>
+          <Arrow glyph="↗" />
           <b className="display text-[20px] lg:text-[clamp(20px,1.688vw,32px)]">LinkedIn</b>
         </a>
         <a
@@ -61,14 +60,12 @@ export default function ContactPage() {
           rel="noopener noreferrer"
           className="tile justify-between gap-3.5 bg-mustard lg:col-span-2 lg:col-start-11 lg:min-h-[clamp(140px,10.31vw,200px)]"
         >
-          <span aria-hidden="true" className="arrow">
-            ↗
-          </span>
+          <Arrow glyph="↗" />
           <b className="display text-[20px] lg:text-[clamp(20px,1.688vw,32px)]">GitHub</b>
         </a>
 
         <Recommendation short className="col-span-2 bg-cream lg:col-span-5 lg:col-start-8" />
-      </div>
+      </Bento>
     </Page>
   );
 }

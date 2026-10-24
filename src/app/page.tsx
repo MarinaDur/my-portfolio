@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Page } from "@/components/PageHeader";
+import { Arrow } from "@/components/Arrow";
+import { Bento } from "@/components/Bento";
+import { Page } from "@/components/Page";
 import { Bug } from "@/components/bug-hunt/Bug";
 import { WorkSlideshow } from "@/components/WorkSlideshow";
 import { projects } from "@/data/projects";
@@ -17,11 +19,11 @@ const checks = [
 export default function HomePage() {
   return (
     <Page>
-      <div className="stagger grid grid-cols-2 gap-2.5 lg:auto-rows-[clamp(160px,12vw,240px)] lg:grid-cols-12 lg:gap-[clamp(12px,0.9375vw,18px)]">
-        <section className="tile tilt col-span-2 justify-center gap-5 bg-clay p-[22px] text-light lg:col-span-7 lg:row-span-2 lg:gap-[clamp(22px,2.062vw,36px)] lg:px-[clamp(32px,3vw,60px)] lg:py-[clamp(32px,2.812vw,56px)]">
+      <Bento className="lg:auto-rows-[clamp(160px,12vw,240px)]">
+        <section className="tile tilt col-span-2 justify-center gap-5 bg-clay p-5.5 text-light lg:col-span-7 lg:row-span-2 lg:gap-[clamp(22px,2.062vw,36px)] lg:px-[clamp(32px,3vw,60px)] lg:py-[clamp(32px,2.812vw,56px)]">
           <div className="flex flex-col items-start gap-3">
             <span className="inline-flex items-center gap-2 text-[13px] font-semibold tracking-[0.02em] opacity-95">
-              <i className="block size-[7px] rounded-full bg-mint" />
+              <i className="block size-1.75 rounded-full bg-mint" />
               Available for freelance
             </span>
             <p className="label">Hi, I’m Marina — web developer &amp; QA engineer</p>
@@ -52,11 +54,9 @@ export default function HomePage() {
             sizes="(min-width: 900px) 25vw, 50vw"
             className="object-cover object-[50%_22%] transition-transform duration-1000 ease-[cubic-bezier(0.2,0.7,0.2,1)] group-hover:scale-105"
           />
-          <span className="relative mt-auto flex items-center justify-between gap-3 self-stretch rounded-full bg-cream py-[5px] pr-[5px] pl-4">
+          <span className="relative mt-auto flex items-center justify-between gap-3 self-stretch rounded-full bg-cream py-1.25 pr-1.25 pl-4">
             <b className="display text-[17px] lg:text-[clamp(17px,1.312vw,26px)]">About me</b>
-            <span aria-hidden="true" className="arrow size-9 bg-ink text-cream">
-              →
-            </span>
+            <Arrow className="size-9 bg-ink text-cream" />
           </span>
         </Link>
 
@@ -70,9 +70,7 @@ export default function HomePage() {
         </Link>
 
         <Link href="/contact" className="tile tilt justify-between gap-2.5 bg-ink text-light lg:col-span-3 lg:col-start-8 lg:row-start-4">
-          <span aria-hidden="true" className="arrow">
-            →
-          </span>
+          <Arrow />
           <div>
             <b className="display block text-[22px] leading-[1.05] text-pink-b lg:text-[clamp(22px,1.781vw,36px)]">Let’s talk</b>
             <small className="block text-[13px] leading-[1.3] font-medium">Tell me about your project</small>
@@ -91,24 +89,20 @@ export default function HomePage() {
               <b className="display block text-[22px] leading-[1.1] lg:text-[clamp(22px,1.688vw,34px)]">Selected work</b>
               <small className="font-medium text-ink-2">{projects.length} projects — sites, apps &amp; tests</small>
             </div>
-            <span aria-hidden="true" className="arrow">
-              →
-            </span>
+            <Arrow />
           </div>
         </Link>
 
         {/* Whole tile is clickable via the link's ::after overlay; the bug button sits above it (a button can't go inside a link). */}
-        <div className="group tile col-span-2 bg-cream px-[18px] pt-4 pb-2 hover:-translate-y-[3px] has-[a:focus-visible]:outline-3 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-clay lg:col-span-3 lg:row-span-2 lg:justify-center lg:p-[clamp(20px,1.688vw,34px)]">
+        <div className="group tile col-span-2 bg-cream px-4.5 pt-4 pb-2 hover:-translate-y-0.75 has-[a:focus-visible]:outline-3 has-[a:focus-visible]:outline-offset-2 has-[a:focus-visible]:outline-clay lg:col-span-3 lg:row-span-2 lg:justify-center lg:p-[clamp(20px,1.688vw,34px)]">
           <Link href="/services" className="label after:absolute after:inset-0 after:content-[''] focus-visible:outline-none">
             What I can do for you
           </Link>
-          <ul>
-            {services.map((service, i) => (
+          <ul className="divide-y-[1.5px] divide-line">
+            {services.map((service) => (
               <li
                 key={service}
-                className={`display flex min-h-13 items-center justify-between text-[19px] lg:min-h-[clamp(56px,4.312vw,88px)] lg:text-[clamp(18px,1.359vw,28px)] ${
-                  i > 0 ? "border-t-[1.5px] border-line" : ""
-                }`}
+                className="display flex min-h-13 items-center justify-between text-[19px] lg:min-h-[clamp(56px,4.312vw,88px)] lg:text-[clamp(18px,1.359vw,28px)]"
               >
                 {service}
                 <span aria-hidden="true" className="text-clay transition-transform duration-300 group-hover:translate-x-1">
@@ -150,7 +144,7 @@ export default function HomePage() {
             psst… 5 bugs are hiding on this site. Can you catch them all?
           </p>
         </section>
-      </div>
+      </Bento>
     </Page>
   );
 }

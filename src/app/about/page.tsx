@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { Page, PageHeader } from "@/components/PageHeader";
+import { Bento } from "@/components/Bento";
+import { CtaTile } from "@/components/CtaTile";
+import { Page } from "@/components/Page";
+import { PageHeader } from "@/components/PageHeader";
 import { Recommendation } from "@/components/Recommendation";
 import { Bug } from "@/components/bug-hunt/Bug";
 
@@ -38,7 +40,7 @@ export default function AboutPage() {
     <Page>
       <PageHeader title="A bit about" accent="me" />
 
-      <div className="stagger grid grid-cols-2 gap-2.5 lg:grid-cols-12 lg:gap-[clamp(12px,0.9375vw,18px)]">
+      <Bento>
         <section className="tile col-span-2 justify-between gap-3 bg-cream lg:col-span-7 lg:row-span-2 lg:p-[clamp(26px,2.25vw,46px)]">
           <div className="flex items-center gap-3">
             <Image
@@ -128,15 +130,8 @@ export default function AboutPage() {
           <Bug id={5} className="relative -my-2 -mr-2 shrink-0 self-start" />
         </section>
 
-        <Link href="/contact" className="tile col-span-2 bg-clay text-light lg:col-span-3">
-          <div className="flex items-center justify-between gap-3">
-            <b className="display text-[24px] leading-[1.05] lg:text-[clamp(24px,1.875vw,38px)]">Let’s work together</b>
-            <span aria-hidden="true" className="arrow">
-              →
-            </span>
-          </div>
-        </Link>
-      </div>
+        <CtaTile title="Let’s work together" className="col-span-2 lg:col-span-3" />
+      </Bento>
     </Page>
   );
 }

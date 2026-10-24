@@ -21,13 +21,13 @@ const reportRuns = [
 
 export function ProjectCard({ project }: { project: Project }) {
   const dark = project.color === "ink";
-  const linkClass = `inline-flex min-h-11 items-center rounded-full border-[1.5px] px-[18px] text-sm font-bold ${
+  const linkClass = `inline-flex min-h-11 items-center rounded-full border-[1.5px] px-4.5 text-sm font-bold ${
     dark ? "border-sand bg-transparent text-sand" : "border-ink bg-cream text-ink"
   }`;
 
   return (
     <article
-      className={`group animate-fade-up rounded-3xl p-2.5 lg:rounded-[clamp(24px,1.875vw,36px)] lg:p-[clamp(10px,0.8438vw,16px)] ${
+      className={`group col-span-2 animate-fade-up rounded-3xl p-2.5 lg:rounded-[clamp(24px,1.875vw,36px)] lg:p-[clamp(10px,0.8438vw,16px)] ${
         project.featured ? "lg:col-span-6" : "lg:col-span-3"
       } ${colors[project.color]}`}
     >

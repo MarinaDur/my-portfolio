@@ -16,7 +16,7 @@ export function Header() {
     <>
       <header className="sticky top-0 z-10 bg-bg/94 backdrop-blur-md">
         {/* Same max width as <Page> so the logo lines up with the content on wide screens */}
-        <div className="mx-auto flex max-w-[1700px] items-center gap-2.5 px-4 py-3 lg:gap-5 lg:px-[clamp(24px,3.188vw,64px)] lg:py-[clamp(14px,1.219vw,24px)]">
+        <div className="mx-auto flex max-w-425 items-center gap-2.5 px-4 py-3 lg:gap-5 lg:px-[clamp(24px,3.188vw,64px)] lg:py-[clamp(14px,1.219vw,24px)]">
           <Logo />
 
           <nav aria-label="Main" className="hidden gap-1 rounded-full bg-cream p-1 lg:flex">

@@ -18,11 +18,3 @@ export function PageHeader({ title, accent, intro, children }: PageHeaderProps) 
     </div>
   );
 }
-
-export function Page({ children }: { children: React.ReactNode }) {
-  return (
-    <main className="mx-auto max-w-[1700px] animate-fade-up px-3.5 pt-1 pb-7 lg:px-[clamp(24px,3.188vw,64px)] lg:pb-10">
-      {children}
-    </main>
-  );
-}

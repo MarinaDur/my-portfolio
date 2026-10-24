@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Page, PageHeader } from "@/components/PageHeader";
+import { Bento } from "@/components/Bento";
+import { CtaTile } from "@/components/CtaTile";
+import { Page } from "@/components/Page";
+import { PageHeader } from "@/components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -73,7 +75,7 @@ export default function ServicesPage() {
         intro="Hire me to build, to test, or both — one person who knows where things break."
       />
 
-      <div className="stagger grid grid-cols-2 gap-2.5 lg:grid-cols-12 lg:gap-[clamp(12px,0.9375vw,18px)]">
+      <Bento>
         {services.map((service) => (
           <section
             key={service.title}
@@ -99,29 +101,19 @@ export default function ServicesPage() {
         <section className="tile col-span-2 justify-between gap-4 bg-cream lg:col-span-8">
           <h2 className="label">How we’ll work</h2>
           <ol className="display flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[20px] leading-[1.05] lg:gap-x-[clamp(12px,1.25vw,24px)] lg:text-[clamp(24px,1.875vw,38px)]">
-            {steps.map((step, i) => (
-              <li key={step} className="flex items-center gap-x-2.5 lg:gap-x-[clamp(12px,1.25vw,24px)]">
+            {steps.map((step) => (
+              <li key={step} className="group/step flex items-center gap-x-2.5 lg:gap-x-[clamp(12px,1.25vw,24px)]">
                 {step}
-                {i < steps.length - 1 && (
-                  <span aria-hidden="true" className="text-clay">
-                    →
-                  </span>
-                )}
+                <span aria-hidden="true" className="text-clay group-last/step:hidden">
+                  →
+                </span>
               </li>
             ))}
           </ol>
         </section>
 
-        <Link href="/contact" className="tile col-span-2 justify-between gap-4 bg-clay text-light lg:col-span-4">
-          <p className="label">Ready when you are</p>
-          <div className="flex items-center justify-between gap-3">
-            <b className="display text-[24px] leading-[1.05] lg:text-[clamp(24px,1.875vw,38px)]">Start a project</b>
-            <span aria-hidden="true" className="arrow">
-              →
-            </span>
-          </div>
-        </Link>
-      </div>
+        <CtaTile label="Ready when you are" title="Start a project" className="col-span-2 lg:col-span-4" />
+      </Bento>
     </Page>
   );
 }

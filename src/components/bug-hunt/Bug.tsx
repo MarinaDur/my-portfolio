@@ -20,12 +20,8 @@ export function Bug({ id, className = "absolute", size = 24, spots }: BugProps) 
       type="button"
       aria-label={caught ? "Bug caught" : "A hidden bug — catch it"}
       disabled={caught}
-      onClick={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        catchBug(id);
-      }}
-      className={`z-[4] inline-flex size-10 cursor-pointer items-center justify-center border-0 bg-transparent p-0 opacity-90 transition duration-250 hover:scale-112 hover:opacity-100 disabled:cursor-default disabled:hover:scale-100 ${className}`}
+      onClick={() => catchBug(id)}
+      className={`z-4 inline-flex size-10 cursor-pointer items-center justify-center border-0 bg-transparent p-0 opacity-90 transition duration-250 hover:scale-112 hover:opacity-100 disabled:cursor-default disabled:hover:scale-100 ${className}`}
     >
       {caught ? (
         <span
