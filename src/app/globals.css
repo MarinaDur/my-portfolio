@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/*
+ * Fluid sizes use clamp(min, Nvw, max). The vw factors are the design's values × 0.9375 (1440/1536),
+ * so a typical 1536px-wide laptop window renders like the design's 1440px desktop board.
+ */
+@theme {
+  --breakpoint-lg: 56.25rem; /* 900px — where the desktop layout kicks in */
+
+  --font-sans: var(--font-bricolage), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --color-bg: #f4ece1;
+  --color-ink: #2b1d16;
+  --color-ink-2: #5e4a3e;
+  --color-clay: #b4502b;
+  --color-mustard: #f2b544;
+  --color-sage: #b9cca4;
+  --color-sage-2: #c9d8b6;
+  --color-pink: #ffb3c6;
+  --color-pink-b: #ff8fab;
+  --color-peach: #f4c6a6;
+  --color-cream: #fffdf8;
+  --color-line: #e6dacb;
+  --color-light: #fff7ee; /* text on dark tiles */
+  --color-sand: #efe3d3; /* terminal text */
+  --color-mist: #d8cabd; /* muted text on dark tiles */
+  --color-coal: #3a2a22; /* inputs on dark tiles */
+  --color-tan: #e3a985; /* photo placeholder */
+  --color-bark: #5a3420;
+  --color-leaf: #2e9e5b;
+  --color-mint: #8fd694;
+
+  --animate-fade-up: fade-up 0.6s ease backwards;
+  --animate-line-in: line-in 0.4s ease backwards;
+  --animate-slide-down: slide-down 0.6s cubic-bezier(0.2, 0.9, 0.25, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+  }
+  @keyframes line-in {
+    from {
+      opacity: 0;
+      transform: translateX(-6px);
+    }
+  }
+  @keyframes slide-down {
+    from {
+      transform: translateY(-100%);
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-bg font-sans text-base leading-[1.45] text-ink antialiased lg:text-[clamp(16px,1.031vw,20px)];
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 3px solid var(--color-clay);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Rounded colored card — the building block of every page. */
+  .tile {
+    @apply relative flex animate-fade-up flex-col overflow-hidden rounded-3xl p-[18px] transition-transform duration-350 lg:rounded-[clamp(24px,1.875vw,36px)] lg:p-[clamp(20px,1.688vw,34px)];
+  }
+  a.tile:hover {
+    transform: translateY(-3px);
+  }
+  a.tile:active {
+    transform: scale(0.98);
+  }
+  /* Non-link tiles lean toward the cursor (angles are set by TiltEffect). */
+  .tilt:not(a):hover {
+    transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.3s ease-out;
+  }
+
+  .stagger > :nth-child(2) { animation-delay: 0.05s; }
+  .stagger > :nth-child(3) { animation-delay: 0.1s; }
+  .stagger > :nth-child(4) { animation-delay: 0.15s; }
+  .stagger > :nth-child(5) { animation-delay: 0.2s; }
+  .stagger > :nth-child(6) { animation-delay: 0.25s; }
+  .stagger > :nth-child(7) { animation-delay: 0.3s; }
+  .stagger > :nth-child(8) { animation-delay: 0.35s; }
+
+  .display {
+    @apply font-extrabold tracking-[-0.045em];
+  }
+
+  .label {
+    @apply m-0 text-[13px] font-semibold opacity-85 lg:text-[clamp(13px,0.8906vw,16px)];
+  }
+
+  .pill {
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-full border-2 border-transparent px-[18px] text-[15px] font-bold transition-transform duration-300 hover:-translate-y-px;
+  }
+
+  /* Round arrow badge that turns when its tile is hovered. */
+  .arrow {
+    @apply inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-cream font-extrabold text-ink transition-transform duration-400 ease-[cubic-bezier(0.3,1.6,0.5,1)];
+  }
+  a:hover .arrow {
+    transform: rotate(-45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
